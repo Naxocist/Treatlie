@@ -23,6 +23,7 @@ function App() {
         </button>
         <p>
           This is edited file in another branch.
+          Another line to check if this is working.
         </p>
       </div>
       <p className="read-the-docs">
