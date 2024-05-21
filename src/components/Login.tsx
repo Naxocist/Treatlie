@@ -1,13 +1,13 @@
-import reactLogo from './assets/react.svg'
+import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
-import './Login.css'
+import '../css/Login.css'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '../ts/firebase'
 
 function Login() {
 
-  const handleGoogle = () => {
-    const provider = new GoogleAuthProvider
+  const handleGoogle = async () => {
+    const provider = await new GoogleAuthProvider
     return signInWithPopup(auth, provider)
   }
 
