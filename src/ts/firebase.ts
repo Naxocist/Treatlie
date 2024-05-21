@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  // apiKey: "AIzaSyBHch1p8x_3_atUmPPGLnDBI092Rm5KkwE",
   apiKey: `${process.env.FIREBASE_GOOGLE_API_KEY}`,
   authDomain: "treatlie.firebaseapp.com",
   projectId: "treatlie",
