@@ -9,7 +9,7 @@ const envKeys = [
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const processEnv : { [key: string]: any } = {};
+  const processEnv = {};
   envKeys.forEach(key => processEnv[key] = env[key]);
 
   return {
