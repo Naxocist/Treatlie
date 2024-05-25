@@ -1,8 +1,8 @@
 import reactLogo from '../assets/react.svg'
 import viteLogo from '/vite.svg'
 import '../css/Login.css'
+import { auth } from '../js/firebase'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { auth } from '../ts/firebase'
 
 
 export default function Login() {
