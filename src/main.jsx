@@ -4,22 +4,37 @@ import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
   RouterProvider,
-} from "react-router-dom";
+} from 'react-router-dom';
 
-import Login from './components/Login.jsx'
-import './css/index.css'
 
+// import all jsx components
+import { Login, Options, Patient, Doctor } from './components'
+
+// import all css
+import './css/bundle.css'
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Login />,
   },
+  {
+    path: '/options',
+    element: <Options />
+  },
+  {
+    path: '/patient',
+    element: <Patient />
+  },
+  {
+    path: '/doctor',
+    element: <Doctor />
+  }
 ]);
 
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>
 )

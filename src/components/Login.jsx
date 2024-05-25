@@ -1,38 +1,43 @@
+import { Link } from 'react-router-dom'
+
 import reactLogo from '../assets/react.svg'
-import viteLogo from '/vite.svg'
-import '../css/Login.css'
+
 import { auth } from '../js/firebase'
-import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 
 
-export default function Login() {
+function Login() {
 
   const handleGoogle = async () => {
+
     const provider = await new GoogleAuthProvider
-    return signInWithPopup(auth, provider)
+    await signInWithPopup(auth, provider)
+
+    return location.assign('/options')
   }
 
   return (
     <>
       <div>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
+        <a href='https://react.dev' target='_blank'>
+          <img src={reactLogo} className='logo react' alt='React logo' />
         </a>
       </div>
 
-      <h1>Treatlie</h1>
+      <h1 className='title'>Treatlie</h1>
 
 
-      <div className="card">
+      <div className='card'>
         <button onClick={handleGoogle}>
           Login with Google
         </button>
       </div>
 
-      <p className="description">
+      <p className='description'>
         Enhances medical communication experiences
       </p>
     </>
   )
 }
 
+export default Login
