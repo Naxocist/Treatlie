@@ -4,7 +4,8 @@ import '../css/Login.css'
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from '../ts/firebase'
 
-function Login() {
+
+export default function Login() {
 
   const handleGoogle = async () => {
     const provider = await new GoogleAuthProvider
@@ -14,26 +15,24 @@ function Login() {
   return (
     <>
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
         <a href="https://react.dev" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
         </a>
       </div>
+
       <h1>Treatlie</h1>
+
+
       <div className="card">
-        <button onClick={ handleGoogle }>
+        <button onClick={handleGoogle}>
           Login with Google
         </button>
-        <p>
-        </p>
       </div>
-      <p className="read-the-docs">
-        Enhances communication between doctors and patiences 
+
+      <p className="description">
+        Enhances medical communication experiences
       </p>
     </>
   )
 }
 
-export default Login
