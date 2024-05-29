@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom'
-
 import reactLogo from '../assets/react.svg'
 
-import { auth } from '../js/firebase'
+import { auth, db } from '../js/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { get, ref } from 'firebase/database'
 
 
 function Login() {
@@ -13,7 +12,37 @@ function Login() {
     const provider = await new GoogleAuthProvider
     await signInWithPopup(auth, provider)
 
-    location.assign('/options')
+    const uid = auth.currentUser.uid;
+    console.log(uid)
+
+    get(ref(db, 'info/' + uid)).then( (res) => {
+      if (res.exists()) {
+        // existing user
+
+        const info = res.val();
+        // console.log(value);
+
+        if (info.role == "admin") {
+          return location.assign('/options')
+        }
+
+        if(info.role == "patient") {
+          return location.assign('/patient')
+        }
+
+        if(info.role == "doctor") {
+          return location.assign('/doctor')
+        }
+
+      } else {
+        // New user
+        console.log("New user")
+
+        return location.assign('/Input')
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
   }
 
   return (

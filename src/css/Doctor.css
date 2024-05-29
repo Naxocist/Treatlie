@@ -1,0 +1,16 @@
+.doc-wrap {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar-wrap {
+    width: 20vw;
+    background-color: blue;
+}
+
+.events-wrap {
+    flex-grow: 1;
+    background-color: purple;
+}
+
