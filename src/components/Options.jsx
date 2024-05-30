@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 function Options() {
-
   return (
     <>
       <h1 className='who-r-u'>Who are you?</h1>

@@ -6,11 +6,10 @@
 
 .sidebar-wrap {
     width: 20vw;
-    background-color: blue;
+    background-color: black;
 }
 
-.events-wrap {
+.outlet-wrap {
     flex-grow: 1;
-    background-color: purple;
 }
 

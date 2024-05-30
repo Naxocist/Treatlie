@@ -1,10 +1,12 @@
-import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-function PatientCard({name}) {
+function PatientCard({name, uid}) {
 
   return (
     <div>
-    <h3>{name}</h3>
+      <NavLink to={'profile/' + uid} className='p-list'> 
+        {name}
+      </NavLink>
     </div>
   )
 }

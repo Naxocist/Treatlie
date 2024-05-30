@@ -1,37 +1,40 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 
+// jsx components
+import { Login, Options, Patient, Doctor, Input, NotFound, Profile} from './components'
 
-// import all jsx components
-import { Login, Options, Patient, Doctor, Input } from './components'
-
-// import all css
+// css
 import './css/bundle.css'
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <Login />,
+    errorElement: <NotFound />
   },
   {
-    path: '/options',
+    path: 'options',
     element: <Options />
   },
   {
-    path: '/patient',
+    path: 'patient',
     element: <Patient />
   },
   {
-    path: '/doctor',
-    element: <Doctor />
+    path: 'doctor',
+    element: <Doctor />,
+    children: [
+      {
+        path: 'profile/:uid',
+        element: <Profile />,
+      },
+    ]
   },
   {
-    path: '/input',
+    path: 'input',
     element: <Input />
   }
 ]);

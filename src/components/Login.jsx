@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import reactLogo from '../assets/react.svg'
 
 import { auth, db } from '../js/firebase'
@@ -6,6 +7,8 @@ import { get, ref } from 'firebase/database'
 
 
 function Login() {
+
+  const navigate = useNavigate()
 
   const handleGoogle = async () => {
 
@@ -22,23 +25,21 @@ function Login() {
         const info = res.val();
         // console.log(value);
 
-        if (info.role == "admin") {
-          return location.assign('/options')
-        }
+        if (info.role == "admin") 
+          navigate('options')
+        
 
-        if(info.role == "patient") {
-          return location.assign('/patient')
-        }
+        if(info.role == "patient") 
+          navigate('patient')
 
-        if(info.role == "doctor") {
-          return location.assign('/doctor')
-        }
+        if(info.role == "doctor") 
+          navigate('doctor')
 
       } else {
         // New user
         console.log("New user")
 
-        return location.assign('/Input')
+        navigate('input')
       }
     }).catch((error) => {
       console.error(error);
