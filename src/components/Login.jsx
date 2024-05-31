@@ -47,7 +47,7 @@ function Login() {
   }
 
   return (
-    <>
+    <div className='center-wrap'>
       <div>
         <a href='https://react.dev' target='_blank'>
           <img src={reactLogo} className='logo' alt='React logo' />
@@ -66,7 +66,7 @@ function Login() {
       <p className='description'>
         Enhances medical communication experiences
       </p>
-    </>
+    </div>
   )
 }
 

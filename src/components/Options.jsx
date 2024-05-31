@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Options() {
   return (
-    <>
+    <div className='center-wrap'>
       <h1 className='who-r-u'>Who are you?</h1>
 
       <div className='options-card'>
@@ -22,7 +22,7 @@ function Options() {
           </button>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

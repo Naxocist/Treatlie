@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Outlet, useNavigate } from 'react-router-dom'
+import { Outlet, useNavigate, useOutlet } from 'react-router-dom'
 
 import { auth, db } from '../js/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -16,6 +16,7 @@ function Doctor() {
   const [isLoaded, setIsLoaded] = useState(false)
 
   const navigate = useNavigate()
+  const outletLoaded = useOutlet();
 
   
   function hookPatientList(uid) {
@@ -66,17 +67,23 @@ function Doctor() {
       {isLoaded ?
         // loaded
         <div className='doc-wrap'>
+          <section className='place-holder'></section>
           <section className='sidebar-wrap'>
-            <div>
+
               {
                 patientsUid.map(uid => (
                   <PatientCard key={uid} name={usersInfo[uid]['name']} uid={uid} />
                 ))
               }
-            </div>
           </section>
           <section className='outlet-wrap'>
-            <Outlet context={{patientsInfo, usersInfo}}/>
+            { outletLoaded ?
+                <Outlet context={{patientsInfo, usersInfo}}/>
+                :
+                <div className='not-loaded-wrap'>
+                  <h1>Choose who you're going to assist</h1>
+                </div>
+            }
           </section>
         </div> 
         :

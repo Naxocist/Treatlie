@@ -3,11 +3,11 @@ import { NavLink } from 'react-router-dom'
 function PatientCard({name, uid}) {
 
   return (
-    <div>
-      <NavLink to={'profile/' + uid} className='p-list'> 
-        {name}
+      <NavLink to={'profile/' + uid}> 
+        <div className='p-card'>
+          {name}
+        </div>
       </NavLink>
-    </div>
   )
 }
 

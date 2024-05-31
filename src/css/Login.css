@@ -1,4 +1,5 @@
 
+
 .title {
   font-size: 5em;
   margin-bottom: 0;
@@ -24,11 +25,11 @@
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
+} */
 
 .card {
   padding: 2em;

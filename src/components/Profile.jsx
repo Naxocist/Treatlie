@@ -1,5 +1,7 @@
 import { useOutletContext, useParams } from 'react-router-dom'
 
+import unknown from '../assets/unknown.jpg'
+
 
 function calculateAge(birthdayString) {
   const [year, month, day] = birthdayString.split('-').map(Number);
@@ -29,32 +31,42 @@ function Profile() {
   const birthdate = usersInfo[uid]['birth-date']
   const age = calculateAge(birthdate)
 
-  console.log(patientsInfo)
 
   return (
-    <div className='pf-wrap'>
-      <h1>{name}</h1>
-      <img className='pfp' src='https://yt3.googleusercontent.com/33C0tSz8peW_ADjznlH98jC0dbc6kU6GvHtxgSNU2PlbzFYLsWzxxYlQ239bFUAwYJkoaXDi=s900-c-k-c0x00ffffff-no-rj'></img>
+    <>
+      <div className='tp-wrap'>
+          <div className='pfp-wrap'>
+            <img className='pfp' src={unknown}></img>
+          </div>
 
-      <h4>{birthdate}</h4>
-      <h4>{age}</h4>
-
-      <div className='ex-wrap'>
-
-        {
-          patientsInfo[uid] === undefined ? 
-            <></>
-            :
-            patientsInfo[uid]['current-exercises-list'].map( ele => (
-              <div className='ex-card'>
-                <h2>{ele}</h2>
-                <img></img>
-              </div>
-            ))
-        }
+          <div className='info-wrap'>
+            <h1>{name}</h1>
+            <div className='below-info-wrap'>
+              <h3 className='birth-date'>{birthdate}</h3>
+              <h3>{age}</h3>
+            </div>
+          </div>
       </div>
 
-    </div>
+      <div className='ex-wrap'>
+        <h1 className='ex-head'>Exercise list</h1>
+
+        <div className='ex-content-wrap'>
+          {
+            patientsInfo[uid] === undefined ?
+              <></>
+              :
+              patientsInfo[uid]['current-exercises-list'].map(ele => (
+                <div key={ele} className='ex-card'>
+                  <h2>{ele}</h2>
+                  <img></img>
+                </div>
+              ))
+          }
+        </div>
+      </div>
+
+    </>
   )
 }
 
