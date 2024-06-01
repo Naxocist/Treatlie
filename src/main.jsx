@@ -8,7 +8,7 @@ import {
 
 
 // import all jsx components
-import { Login, Options, Patient, Doctor } from './components'
+import { Login, Options, Patient, Doctor, Patient_Tasks } from './components'
 
 // import all css
 import './css/bundle.css'
@@ -29,6 +29,11 @@ const router = createBrowserRouter([
   {
     path: '/doctor',
     element: <Doctor />
+  }
+  ,
+  {
+    path: '/patient/tasks',
+    element: <Patient_Tasks />
   }
 ]);
 
