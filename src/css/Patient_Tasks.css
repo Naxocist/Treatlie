@@ -1,0 +1,95 @@
+.patient_tasks_background {
+  background-color: rgb(248, 248, 255);
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+}
+
+.text {
+  color: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  border: 2px solid;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+  width: 90%;
+  max-width: 455px;
+  padding: 12px;
+  border-radius: 11px;
+  font-size: 30px;
+  margin: 0 auto;
+  background-color: rgb(255, 255, 255);
+}
+
+.done {
+  background-color: #9d9ee3;
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.task {
+  color: black;
+  background-color: rgb(236, 237, 246);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  margin-top: 27px;
+  gap: 27px;
+  border-radius: 11px;
+  margin: auto;
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 10%;
+  justify-items: center;
+  padding: 10px;
+}
+
+.header {
+  font-family: CourierNew, monospace; 
+}
+
+.logo_patient_tasks {
+  color: black;
+  display: flex;
+}
+
+.heart {
+  position: relative; 
+  top: 10px;
+}
+
+.pic {
+  width: 50px;
+  transition: transform 0s;
+}
+
+.each_task {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.each_task:hover {
+  background-color: rgb(209, 209, 209);
+}
+
+.each_task:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}
+
+.posture {
+  margin: 25px;
+  margin-right: 0px;
+}
