@@ -1,36 +1,35 @@
-import { useOutletContext, useParams } from 'react-router-dom'
+import { useOutlet, useOutletContext, useParams } from 'react-router-dom'
+
+import { ref, push, set } from "firebase/database";
+import { db } from '../js/firebase';
 
 import unknown from '../assets/unknown.jpg'
+import { ISOtoString, calculateAge } from '../js/utils'
 
+import Packet from './Packet';
 
-function calculateAge(birthdayString) {
-  const [year, month, day] = birthdayString.split('-').map(Number);
-  
-  const birthday = new Date(year, month - 1, day); 
-  
-  const today = new Date();
-  
-  let age = today.getFullYear() - birthday.getFullYear();
-  
-  const monthDifference = today.getMonth() - birthday.getMonth();
-  const dayDifference = today.getDate() - birthday.getDate();
-  
-  if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
-    age--;
-  }
-  
-  return age;
-}
 
 function Profile() {
+
   const params = useParams()
   const { patientsInfo, usersInfo } = useOutletContext()
+
+  const outletLoaded = useOutlet();
 
   const uid = params.uid;
   const name = usersInfo[uid]['name']
   const birthdate = usersInfo[uid]['birth-date']
   const age = calculateAge(birthdate)
 
+  const packets = patientsInfo[uid]['packets']
+
+  const handleAddPacket = () =>{
+    const dateIso = (new Date).toISOString()
+
+    set(push(ref(db, `patients/${uid}/packets`)), {
+      "created" : dateIso
+    })
+  }
 
   return (
     <>
@@ -48,20 +47,36 @@ function Profile() {
           </div>
       </div>
 
-      <div className='ex-wrap'>
-        <h1 className='ex-head'>Exercise list</h1>
 
-        <div className='ex-content-wrap'>
+      <div className='desc'>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quo autem, temporibus ea dolore aliquid libero ipsam vel distinctio labore?</p>
+      </div>
+
+
+      <div className='ex-head'>
+        <h1>Exercise Packets</h1>
+      </div>
+
+      <div className='ex-wrap'>
+        <h2>Today: {ISOtoString((new Date).toISOString())}</h2>
+
+      <div className='buttons-group-wrap'>
+        <div className='ex-toggle'>
+          <button className='btn'>Toggle DONE</button>
+        </div>
+        <div className='add-packets'>
+          <button className='btn' onClick={handleAddPacket}>add a new packet</button>
+        </div>
+      </div>
+
+        <div className='packets-wrap'>
           {
-            patientsInfo[uid] === undefined ?
-              <></>
-              :
-              patientsInfo[uid]['current-exercises-list'].map(ele => (
-                <div key={ele} className='ex-card'>
-                  <h2>{ele}</h2>
-                  <img></img>
-                </div>
+            packets ?
+              Object.entries(packets).map( ([key, packet]) => (
+                <Packet key={key} hash={key} packet={packet} uid={uid}/>
               ))
+              :
+              <></>
           }
         </div>
       </div>

@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth'
 import { ref, onValue } from 'firebase/database'
 
 import PatientCard from './PatientCard'
+import { CircularProgress } from '@mui/material'
 
 
 function Doctor() {
@@ -14,52 +15,35 @@ function Doctor() {
   const [usersInfo, setUsersInfo] = useState({})
   const [patientsInfo, setPatientsInfo] = useState({})
   const [isLoaded, setIsLoaded] = useState(false)
+  
 
   const navigate = useNavigate()
   const outletLoaded = useOutlet();
 
-  
-  function hookPatientList(uid) {
-    onValue(ref(db, `doctors/${uid}/patient-list`), res => {
-      const curPatientList = res.val()
-      setPatientsUid(curPatientList)
-    });
-  }
-
-
-  function hookUsersInfo() {
-    onValue(ref(db, 'info/'), res => {
-      const info = res.val()
-      setUsersInfo(info)
-      setIsLoaded(true)
-    })
-  }
-
-
-  function hookPatients() {
-    onValue(ref(db, 'patients/'), res => {
-      const patients = res.val()
-      setPatientsInfo(patients)
-    })
-  }
-
-
   useEffect(() => {
-
-    setIsLoaded(false)
-    hookUsersInfo()
-
     onAuthStateChanged(auth, user => {
       if (user) {
-        hookPatientList(user.uid)
-        hookPatients()
+        onValue(ref(db, `doctors/${auth.currentUser.uid}/patient-list`), res => {
+          const data = res.val()
+          setPatientsUid(data)
 
+          onValue(ref(db, 'info/'), res => {
+            const data = res.val()
+            setUsersInfo(data)
+
+            onValue(ref(db, 'patients/'), res => {
+              const data = res.val()
+              setPatientsInfo(data)
+
+              setIsLoaded(true)
+            })
+          })
+    });
       } else {
         navigate('/')
         console.log("Error!")
       }
     })
-    
   }, [])
 
   return (
@@ -81,14 +65,15 @@ function Doctor() {
                 <Outlet context={{patientsInfo, usersInfo}}/>
                 :
                 <div className='not-loaded-wrap'>
-                  <h1>Choose who you're going to assist</h1>
+                  <h1>Select a patient to observe his/her progress</h1>
                 </div>
             }
           </section>
         </div> 
         :
         // not loaded yet
-        <div>
+        <div className='circular-progress'>
+          <CircularProgress />
         </div>
       }
     </>

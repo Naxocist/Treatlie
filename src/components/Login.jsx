@@ -58,12 +58,12 @@ function Login() {
 
 
       <div className='card'>
-        <button onClick={handleGoogle}>
+        <button className='btn' onClick={handleGoogle}>
           Login with Google
         </button>
       </div>
 
-      <p className='description'>
+      <p className='desc-login'>
         Enhances medical communication experiences
       </p>
     </div>

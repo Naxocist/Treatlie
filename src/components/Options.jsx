@@ -7,7 +7,7 @@ function Options() {
 
       <div className='options-card'>
         <div>
-          <button>
+          <button className='btn'>
             <Link to='../patient' >patient</Link>
           </button>
         </div>
@@ -17,7 +17,7 @@ function Options() {
         </div>
 
         <div>
-          <button>
+          <button className='btn'>
             <Link to='../doctor'>doctor</Link>
           </button>
         </div>

@@ -55,6 +55,11 @@
     margin-right: 1em;
 }
 
+.desc {
+    width: 40vw;
+    margin: auto;
+}
+
 /* exercise list */
 .ex-wrap {
     width: 50vw;
@@ -67,22 +72,40 @@
     text-align: center;
 }
 .ex-head {
-    font-size: 3em;
-}
-.ex-content-wrap {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-}
-.ex-card {
-    margin: 1em;
-    display: flex;
-    justify-content: center;
-    background-color: antiquewhite;
-    border-radius: 5px;
-    color: black;
+    font-size: 2em;
+    text-align: center;
 }
 
+.buttons-group-wrap {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1em 0;
+}
+
+.close-wrap {
+    /* background-color: red; */
+}
+.close-wrap>img {
+    width: 20px;
+}
+
+
+.packets-wrap {
+    /* background-color: blue; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.packet-wrap {
+    font-size: 1.25em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+    background-color: grey;
+    border-radius: 10px;
+    margin: 1em;
+}
 
 /* sidebar */
 .p-card {
@@ -126,4 +149,12 @@
     justify-content: center;
     align-items: center;
     font-size: 2em;
+}
+
+.circular-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
 }
