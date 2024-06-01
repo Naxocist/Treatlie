@@ -15,7 +15,6 @@ body {
   margin: 0;
 }
 
-/* Chat Container */
 .chat-container {
   width: 100%;
   max-width: 800px;
@@ -26,7 +25,6 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Title */
 .chat-title {
   text-align: center;
   font-size: 32px;
@@ -34,7 +32,6 @@ body {
   color: #333333;
 }
 
-/* Message List */
 .message-list {
   list-style-type: none;
   margin-bottom: 30px;
@@ -50,7 +47,6 @@ body {
   border-bottom: none;
 }
 
-/* Form */
 .message-form {
   display: flex;
   align-items: center;

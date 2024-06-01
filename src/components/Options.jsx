@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { auth } from '../js/firebase';
 
 function Options() {
   return (

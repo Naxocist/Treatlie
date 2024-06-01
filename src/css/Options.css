@@ -1,3 +1,53 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
 .who-r-u {
-    font-size: 3em;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.options-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.options-card div {
+    margin: 10px 0;
+}
+
+.options-card a {
+    text-decoration: none;
+    color: #fff;
+    background-color: #333;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.options-card a.pressing {
+    background-color: #ff6347;
+}
+
+.options-card a:hover {
+    background-color: #555;
+}
+
+.options-card p {
+    margin: 0;
+    font-size: 1.2em;
+    color: #333;
 }

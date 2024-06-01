@@ -1,9 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { auth } from '../js/firebase';
 
-function Doctor() {
+const Doctor = () => {
+  const navigate = useNavigate();
+
+  const handleChat = () => {
+    const currentUserId = auth.currentUser.uid;
+    navigate(`/doctorchat/${currentUserId}`);
+  };
+
   return (
-    <div>Doctor</div>
-  )
-}
+    <div>
+      <button onClick={() => handleChat()}>Chat with Patient</button>
+    </div>
+  );
+};
 
-export default Doctor
+export default Doctor;

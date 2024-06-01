@@ -14,7 +14,6 @@ const firebaseConfig = {
   databaseURL: "https://treatlie-default-rtdb.asia-southeast1.firebasedatabase.app/",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 export const db = getDatabase(app);
