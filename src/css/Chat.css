@@ -1,44 +1,49 @@
-/* bundle.css */
-
-/* Container styles */
 .chat-container {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 20px auto;
   padding: 20px;
-  border-radius: 8px;
-  background-color: #fff; /* White background color */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
+  border: 2px solid #84a59d;
+  border-radius: 12px;
+  background-color: #f7ede2;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
 }
 
-/* Header styles */
 .chat-header {
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #84a59d;
 }
 
 .chat-logo {
-  width: 50px; /* Adjust the size as needed */
+  width: 50px;
   height: auto;
   margin-right: 10px;
 }
 
 .chat-title {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: bold;
-  color: #007bff; /* Blue color for the title */
+  color: #7ab9e1;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Message container styles */
 .message-container {
-  border: 2px solid #007bff; /* Blue border for the message container */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #84a59d;
   border-radius: 8px;
   padding: 10px;
-  overflow: hidden; /* Ensure the border does not affect the layout */
+  background-color: #fff;
+  overflow: hidden;
 }
 
-/* Message list styles */
 .message-list {
   list-style: none;
   padding: 0;
@@ -47,6 +52,21 @@
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #7ab9e1 #f7ede2;
+}
+
+.message-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.message-list::-webkit-scrollbar-track {
+  background: #f7ede2;
+}
+
+.message-list::-webkit-scrollbar-thumb {
+  background-color: #7ab9e1;
+  border-radius: 4px;
 }
 
 .message-item {
@@ -55,47 +75,62 @@
   border-radius: 20px;
   max-width: 70%;
   word-wrap: break-word;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow for depth */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .message-item.sent {
-  background-color: #007bff; /* Blue background for sent messages */
-  color: #fff; /* White text for sent messages */
+  background-color: #7ab9e1;
+  color: #000;
   align-self: flex-end;
   text-align: right;
 }
 
 .message-item.received {
-  background-color: #f0f0f0; /* Lighter background for received messages */
-  border: 1px solid #007bff; /* Blue border for received messages */
+  background-color: #f5cac3;
+  border: 1px solid #dd8aa8;
+  color: #000;
+  align-self: flex-start;
   text-align: left;
-  color: #333; /* Darker text for received messages */
 }
 
-/* Message form styles */
 .message-form {
   display: flex;
   gap: 10px;
+  padding-top: 10px;
+  border-top: 2px solid #84a59d;
+  background-color: #f7ede2;
 }
 
 .message-input {
   flex: 1;
-  padding: 10px;
+  padding: 10px 15px;
   border-radius: 20px;
   border: 1px solid #ccc;
-  background-color: #f0f0f0; /* Lighter background for input */
-  color: #333; /* Darker text for input */
+  background-color: #f7ede2;
+  color: #000;
+  transition: border-color 0.3s;
+}
+
+.message-input:focus {
+  border-color: #7ab9e1;
+  outline: none;
 }
 
 .send-button {
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
-  background-color: #007bff;
+  background-color: #7ab9e1;
   color: #fff;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .send-button:hover {
-  background-color: #0056b3;
+  background-color: #6aa8d8;
+  transform: scale(1.05);
+}
+
+.send-button:active {
+  transform: scale(1);
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { ref, onValue, push } from 'firebase/database';
-import { db } from '../js/firebase';
+import { getDatabase, ref, onValue, push } from 'firebase/database';
+import { db } from '../js/firebase'; // Ensure this imports the initialized Firebase app
 import '../css/bundle.css';
 
 const DoctorChat = ({ currentUserId }) => {
@@ -16,10 +16,22 @@ const DoctorChat = ({ currentUserId }) => {
       onValue(patientsRef, (snapshot) => {
         const patientData = snapshot.val();
         if (patientData) {
-          const patientList = Object.entries(patientData)
+          const patientIds = Object.entries(patientData)
             .filter(([_, patient]) => patient['paired-doctor-uid'] === currentUserId)
             .map(([patientId, _]) => patientId);
-          setPatients(patientList);
+
+          const patientPromises = patientIds.map((patientId) =>
+            new Promise((resolve) => {
+              const patientInfoRef = ref(db, `info/${patientId}`);
+              onValue(patientInfoRef, (snap) => {
+                resolve({ id: patientId, name: snap.val()?.name || patientId });
+              });
+            })
+          );
+
+          Promise.all(patientPromises).then((patientList) => {
+            setPatients(patientList);
+          });
         }
       });
     }
@@ -34,7 +46,7 @@ const DoctorChat = ({ currentUserId }) => {
 
   useEffect(() => {
     if (chatRoomId) {
-      const messagesRef = ref(db, `chatrooms/${chatRoomId}/messages`);
+      const messagesRef = ref(getDatabase(), `chatrooms/${chatRoomId}/messages`);
       onValue(messagesRef, (snapshot) => {
         const messageData = snapshot.val();
         if (messageData) {
@@ -54,7 +66,7 @@ const DoctorChat = ({ currentUserId }) => {
       console.error('No chat room selected.');
       return;
     }
-    const messageRef = ref(db, `chatrooms/${chatRoomId}/messages`);
+    const messageRef = ref(getDatabase(), `chatrooms/${chatRoomId}/messages`);
     const message = {
       senderId: currentUserId,
       content: newMessage,
@@ -75,11 +87,12 @@ const DoctorChat = ({ currentUserId }) => {
           onChange={(e) => setSelectedPatientId(e.target.value)}
         >
           <option value="">Select...</option>
-          {patients.map((patientId) => (
-            <option key={patientId} value={patientId}>{patientId}</option>
+          {patients.map((patient) => (
+            <option key={patient.id} value={patient.id}>{patient.name}</option>
           ))}
         </select>
       </div>
+      <br></br>
       <ul className="message-list">
         {messages.map((message) => (
           <li key={message.id} className={`message-item ${message.senderId === currentUserId ? 'sent' : 'received'}`}>
