@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth } from '../js/firebase';
+import '../css/bundle.css';
 
 const Patient = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Patient = () => {
 
   return (
     <div>
-      <button onClick={() => handleChat()}>Chat with Doctors</button>
+      <button className="chat-button" onClick={() => handleChat()}>Chat with Doctors</button>
     </div>
   );
 };

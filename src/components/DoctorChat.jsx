@@ -11,15 +11,19 @@ const DoctorChat = ({ currentUserId }) => {
   const [patients, setPatients] = useState([]);
 
   useEffect(() => {
-    const patientsRef = ref(db, 'patients');
-    onValue(patientsRef, (snapshot) => {
-      const patientData = snapshot.val();
-      if (patientData) {
-        const patientList = Object.keys(patientData);
-        setPatients(patientList);
-      }
-    });
-  }, []);
+    if (currentUserId) {
+      const patientsRef = ref(db, 'patients');
+      onValue(patientsRef, (snapshot) => {
+        const patientData = snapshot.val();
+        if (patientData) {
+          const patientList = Object.entries(patientData)
+            .filter(([_, patient]) => patient['paired-doctor-uid'] === currentUserId)
+            .map(([patientId, _]) => patientId);
+          setPatients(patientList);
+        }
+      });
+    }
+  }, [currentUserId]);
 
   useEffect(() => {
     if (selectedPatientId) {
@@ -64,7 +68,7 @@ const DoctorChat = ({ currentUserId }) => {
     <div className="chat-container">
       <h1 className="chat-title">Doctor Chat</h1>
       <div>
-        <label htmlFor="patientSelect">Select a patient to chat with : </label>
+        <label htmlFor="patientSelect">Select a patient to chat with: </label>
         <select
           id="patientSelect"
           value={selectedPatientId}

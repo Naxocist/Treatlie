@@ -19,7 +19,7 @@ const PatientChat = ({ currentUserId }) => {
 
     fetchPairedDoctorId();
   }, [currentUserId]);
-
+  console.log(chatPartnerId);
   useEffect(() => {
     if (chatPartnerId) {
       const chatRoomId = [currentUserId, chatPartnerId].sort().join('_');
