@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 
 // jsx components
-import { Login, Options, Patient, Doctor, Input, NotFound, Profile} from './components'
+import { Login, Options, Patient, Doctor, Input, NotFound, Profile, Exercises} from './components'
 
 // css
 import './css/bundle.css'
@@ -30,6 +30,12 @@ const router = createBrowserRouter([
       {
         path: 'profile/:uid',
         element: <Profile />,
+        children: [
+          {
+            path: 'packet/:hash',
+            element: <Exercises />
+          }
+        ]
       },
     ]
   },

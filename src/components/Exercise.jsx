@@ -1,7 +1,16 @@
+import { useNavigate } from "react-router-dom"
+import { auth } from "../js/firebase"
 
-function Exercise() {
+function Exercise({exName, status, removeMode}) {
+  const navigate = useNavigate()
+
+  const uid = auth.currentUser.uid
+  if(!uid) {
+    navigate('/')
+  }
+
   return (
-    <div>Exercise</div>
+    <div>{exName}</div>
   )
 }
 

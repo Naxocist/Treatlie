@@ -53,12 +53,11 @@ function Doctor() {
         <div className='doc-wrap'>
           <section className='place-holder'></section>
           <section className='sidebar-wrap'>
-
-              {
-                patientsUid.map(uid => (
-                  <PatientCard key={uid} name={usersInfo[uid]['name']} uid={uid} />
-                ))
-              }
+            {
+              patientsUid.map(uid => (
+                <PatientCard key={uid} name={usersInfo[uid]['name']} uid={uid} />
+              ))
+            }
           </section>
           <section className='outlet-wrap'>
             { outletLoaded ?

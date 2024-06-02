@@ -78,15 +78,11 @@
 
 .buttons-group-wrap {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     margin: 1em 0;
 }
-
-.close-wrap {
-    /* background-color: red; */
-}
-.close-wrap>img {
-    width: 20px;
+.buttons-group-wrap>div {
+    margin: 0 1em;
 }
 
 
@@ -97,14 +93,26 @@
     justify-content: center;
 }
 .packet-wrap {
-    font-size: 1.25em;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1em;
-    background-color: grey;
-    border-radius: 10px;
+    padding: 1vw;
+}
+.btn-reset {
+    font-size: 1.5em;
+    background: none;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 0;
     margin: 1em;
+    cursor: pointer;
+    outline: none;
+}
+.btn-remove:hover {
+    background-color: red;
+}
+.btn-norm:hover {
+    background-color: blue;
 }
 
 /* sidebar */
