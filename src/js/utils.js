@@ -4,10 +4,6 @@ export function calculateAge(birthdayString) {
 
   
   const birthday = new Date(year, month - 1, day)
-
-  // const options = { year: 'numeric', month: 'long', day: 'numeric'}
-  // console.log(birthday.toLocaleDateString('en-US', options))
-  // console.log(birthday.toDateString())
   
   const today = new Date()
   

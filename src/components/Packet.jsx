@@ -17,21 +17,21 @@ function Packet({hash, packet, uid, removeMode}) {
 
     return (
       <>
-          {removeMode ?
-            <button className='btn-reset btn-remove' onClick={handleRemovePacket}>
+        {removeMode ?
+          <button className='btn-reset btn-remove' onClick={handleRemovePacket}>
+            <div className='packet-wrap'>
+              {ISOtoString(packet['created'])}
+            </div>
+          </button>
+          :
+          <button className='btn-reset btn-norm'>
+            <NavLink to={'packet/' + hash}>
               <div className='packet-wrap'>
                 {ISOtoString(packet['created'])}
               </div>
-            </button>
-            :
-            <NavLink to={'packet/' + hash}>
-              <button className='btn-reset btn-norm'>
-                <div className='packet-wrap'>
-                  {ISOtoString(packet['created'])}
-                </div>
-              </button>
             </NavLink>
-          }
+          </button>
+        }
       </>
     )
 }

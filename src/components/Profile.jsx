@@ -2,13 +2,9 @@ import { useState } from 'react';
 
 import { useOutlet, useOutletContext, useParams } from 'react-router-dom'
 
-import { ref, push, set } from "firebase/database";
-import { db } from '../js/firebase';
-
 import unknown from '../assets/unknown.jpg'
-import { ISOtoString, calculateAge } from '../js/utils'
+import { calculateAge } from '../js/utils'
 
-import Packet from './Packet';
 import Exercises from './Exercises';
 import Packets from './Packets';
 
@@ -23,8 +19,9 @@ function Profile() {
   const uid = params.uid;
   const name = usersInfo[uid]['name']
   const birthdate = usersInfo[uid]['birth-date']
-  const age = calculateAge(birthdate)
   const packets = patientsInfo[uid]['packets']
+  
+  const age = calculateAge(birthdate)
 
   return (
     <>

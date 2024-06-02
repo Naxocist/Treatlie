@@ -5,7 +5,7 @@ function Input() {
   const [name, setName] = useState('')
   
   return (
-    <div>
+    <div className='input-wrap'>
       <div>
         <input type='text'></input>
       </div>
