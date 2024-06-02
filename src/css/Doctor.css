@@ -11,7 +11,7 @@
 .sidebar-wrap {
     width: 20vw;
     height: 100vh;
-    background-color: black;
+    background-color: var(--darkblue);
     display: block;
     position: fixed;
     padding-top: 1em;
