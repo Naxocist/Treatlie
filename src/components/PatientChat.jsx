@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { ref, onValue, push, get } from 'firebase/database';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { db } from '../js/firebase';
 import '../css/bundle.css';
 
 const PatientChat = ({ currentUserId }) => {
   const [chatPartnerId, setChatPartnerId] = useState(null);
+  const [chatPartnerName, setChatPartnerName] = useState('');
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
-  
+
   useEffect(() => {
     const fetchPairedDoctorId = async () => {
       const patientRef = ref(db, `patients/${currentUserId}/paired-doctor-uid`);
       const snapshot = await get(patientRef);
       if (snapshot.exists()) {
-        setChatPartnerId(snapshot.val());
+        const doctorId = snapshot.val();
+        setChatPartnerId(doctorId);
+
+        // Fetch the doctor's name
+        const doctorRef = ref(db, `info/${doctorId}/name`);
+        const doctorSnapshot = await get(doctorRef);
+        if (doctorSnapshot.exists()) {
+          setChatPartnerName(doctorSnapshot.val());
+        }
       }
     };
 
@@ -56,7 +65,7 @@ const PatientChat = ({ currentUserId }) => {
   return (
     <div className="chat-container">
       <Link to='../patient' className='back-button'>Patient</Link>
-      <h1 className="chat-title">Chat with doctors</h1>
+      <h1 className="chat-title">Chat with {chatPartnerName}</h1>
       <ul className="message-list">
         {messages.map((message) => (
           <li key={message.id} className={`message-item ${message.senderId === currentUserId ? 'sent' : 'received'}`}>
