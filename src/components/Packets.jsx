@@ -1,11 +1,12 @@
 import { db } from "../js/firebase"
 import { set, push, ref } from 'firebase/database'
 
-import { simplifyDate } from "../js/utils"
 import Packet from "./Packet"
+import { useState } from "react"
 
 function Packets({uid, packets, removeMode, setRemoveMode}) {
 
+  const [filter, setFilter] = useState(false)
 
   const handleAddPacket = () =>{
     const dateIso = (new Date).toISOString()
@@ -23,12 +24,33 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
   return (
     <div className='bot-wrap'>
       <div className='bot-head'>
-        <h1>Exercise Packs</h1>
+        <h1>Exercise Packets</h1>
         {/* <h4>date format: day / month / year</h4> */}
         {/* <h4>Today: {simplifyDate(new Date)}</h4> */}
       </div>
-
       <hr/>
+
+
+      <div className='bot-btns-wrap'>
+        <div className='filter-toggle'>
+          <button className='btn' onClick={() => setFilter(!filter)}>filter DONE</button>
+        </div>
+        <div className='add-packet'>
+          <button className='btn' onClick={handleAddPacket}>add a packet</button>
+        </div>
+        <div className='toggle-remove' >
+          <button
+            className='btn'
+            style={{
+              "backgroundColor": removeMode ? "var(--primary-red)" : "",
+            }}
+            onClick={() => {
+              setRemoveMode(!removeMode)
+            }}>
+            remove mode
+          </button>
+        </div>
+      </div>
 
       <div className='bot-list-wrap'>
         { packets ?
@@ -46,26 +68,6 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
         }
       </div>
 
-      <div className='bot-btns-wrap'>
-          <div className='filter-toggle'>
-            <button className='btn'>filter DONE</button>
-          </div>
-          <div className='add-packet'>
-            <button className='btn' onClick={handleAddPacket}>add a packet</button>
-          </div>
-          <div className='toggle-remove' >
-            <button
-              className='btn'
-              style={{ 
-                "backgroundColor": removeMode ? "var(--primary-red)" : "" ,
-              }}
-              onClick={() => {
-                setRemoveMode(!removeMode)
-              }}>
-              remove mode
-            </button>
-          </div>
-        </div>
     </div>
   )
 }

@@ -53,40 +53,62 @@
     font-size: 2em;
     text-align: center;
 }
+.bot-head>div {
+    display: flex;
+    justify-content: center;
+}
+.bot-head>div>h4 {
+    width:fit-content;
+    padding: 10px;
+    background-color: var(--ghost-white);
+    border-radius: 5px;
+    margin: 5px;
+
+    transition: background-color .5s ease, color .5s ease;
+}
+.bot-head>div>h4:hover {
+    background-color: var(--davy-grey);
+    cursor: pointer;
+    color: var(--ghost-white);
+}
 
 /* list container */
 .bot-list-wrap {
     width: 50vw;
     padding: 1em;
     display: flex;
-    flex-direction: column;
-    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     /* background-color: aqua; */
 }
-.bot-list-wrap>div{
-    margin: 1em;
+
+.list-nm-wrap>*, .list-rm-wrap>* {
+    margin: 0;
 }
 
-.btn-reset {
-    all: unset;
-    display: inline-block;
-    box-sizing: border-box;
+
+.outer-wrap {
+    margin: 20px;
 }
 
 .list-nm-wrap, .list-rm-wrap {
-    width: 100%;
-    /* margin: 1em; */
-    text-align: center;
-    padding: 1em;
-    border-radius: 50px;
-    background-color: var(--cadet-grey);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px 40px;
+
+    border-radius: 10px;
+    background-color: var(--primary-pink);
     cursor: pointer;
 
     font-size: 1.25em;
-    font-weight: bold;
+    font-weight: 500;
 
     transition: background-color 0.2s ease;
 }
+
 .list-nm-wrap:hover {
     animation: gentle-up-down 0.7s ease;
 }
@@ -94,14 +116,14 @@
     background-color: var(--primary-red);
 }
 
+
 /* Three buttons */
 .bot-btns-wrap {
     display: flex;
     justify-content: space-evenly;
-    margin: 1em 0;
-    padding: 2em;
-    border-radius: 10px;
-    background-color: var(--davy-grey);
+    padding: 1em;
+    /* border-radius: 20px; */
+    /* background-color: var(--davy-grey); */
 }
 .bot-btns-wrap>div {
     width: 20%;
@@ -154,4 +176,8 @@
     margin: 2em 0;
     display: flex;
     justify-content: center;
+}
+
+.popup-date {
+    background-color: white;
 }

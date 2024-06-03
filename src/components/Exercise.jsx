@@ -14,20 +14,26 @@ function Exercise({uid, hash, exName, status, removeMode}) {
       }
   }
 
+  const done = status['done']
+  const goal = status['goal']
+  // console.log(status)
+
   return (
     <div>
       {removeMode ?
-        <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
-          <div>
-            {exName}
+        <div onClick={handleRemovePacket} className='outer-wrap'>
+          <div className='list-rm-wrap'>
+            <p>{exName}</p>
+            <p>{done} / {goal}</p>
           </div>
-        </button>
+        </div>
         :
-        <button className='list-nm-wrap btn-reset'>
-          <div>
-            {exName}
+        <div className='outer-wrap'>
+          <div className='list-nm-wrap'>
+            <p>{exName}</p>
+            <p>{done} / {goal}</p>
           </div>
-        </button>
+        </div>
       }
     </div>
   )

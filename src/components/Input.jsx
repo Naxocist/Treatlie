@@ -135,6 +135,7 @@ function Input() {
                     onChange={(val) => setDate(val)}
                     label="date of birth"
                     sx={{ width: "100%" }}
+                    format='DD/MM/YYYY'
                   />
 
                 </LocalizationProvider>

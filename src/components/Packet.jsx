@@ -21,27 +21,26 @@ function Packet({hash, packet, uid, removeMode}) {
     const deadline = convertDeadline(packet['deadline'])
 
     return (
-      <div >
+      <>
         {removeMode ?
-          <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
-            <div>
-              Assign on {created}
+          <div onClick={handleRemovePacket} className='outer-wrap'>
+            <div className='list-rm-wrap'>
+              <p> Assigned on </p> 
+              <p>{created} </p>
+              <p>Due <u>{deadline}</u></p>
             </div>
-            <div>
-              Due {deadline}
-            </div>
-          </button>
+          </div>
           :
-          <NavLink to={'packet/' + hash} className='list-nm-wrap btn-reset'>
-            <div>
-              Assign on {created}
-            </div>
-            <div>
-              Due {deadline}
+          <NavLink to={'packet/' + hash} className='outer-wrap'>
+            <div className='list-nm-wrap'>
+              <p>Assigned on</p>
+              <p>{created}</p>
+
+              <p>Due <u>{deadline}</u></p>
             </div>
           </NavLink>
         }
-      </div>
+      </>
     )
 }
 

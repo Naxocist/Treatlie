@@ -9,7 +9,7 @@ export function calculateAge(birthdayString) {
   
   const today = new Date()
 
-  console.log(today, birthday)
+  // console.log(today, birthday)
   
   let age = today.getFullYear() - birthday.getFullYear()
   
@@ -38,7 +38,6 @@ export function simplifyDate(dateObj) {
   const dt = dayjs(dateObj)
 
   return dt.format('d/M/YYYY')
-
 }
 
 export function convertDeadline(dateISO) {
@@ -47,6 +46,8 @@ export function convertDeadline(dateISO) {
   const day2 = dayjs(dateISO)
 
   const dayDifference = day2.diff(day1, 'day')
+  console.log(day1, day2)
+  console.log(dayDifference)
 
   if(dayDifference === 0) {
     return "Today"
