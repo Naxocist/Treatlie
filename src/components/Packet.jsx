@@ -23,10 +23,10 @@ function Packet({hash, packet, uid, removeMode}) {
         {removeMode ?
           <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
             <div>
-              {ISOtoString(created)}
+              {created}
             </div>
             <div>
-              {ISOtoString(deadline)}
+              Due {deadline}
             </div>
           </button>
           :
@@ -35,7 +35,7 @@ function Packet({hash, packet, uid, removeMode}) {
               Assign on {created}
             </div>
             <div>
-              Due  {deadline}
+              Due {deadline}
             </div>
           </NavLink>
         }

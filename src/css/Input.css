@@ -1,10 +1,8 @@
 .input-wrap {
     width: 50vw;
-    height: 100vh;
     margin: 3em auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     padding: 2em;
     align-items: center;
     box-shadow: 0px 0px 20px 2px var(--primary-grey);
@@ -12,19 +10,23 @@
 
 .form-wrap {
     display: flex;
-    /* justify-content: space-around; */
+    flex-direction: column;
+    width: 70%;
+}
+.form-wrap>div {
+    margin-bottom: 40px;
 }
 
-.name {
-    width: 300px;
-    height: 500px;
-}
-
-.name-wrap, .date-wrap {
+.line {
     display: flex;
-    margin: 1.5em 2em;
-    justify-content: center;
 }
+.line>div {
+    width: 50%;
+}
+.line>:first-child {
+    margin-right: 1em;
+}
+
 
 .submit-wrap {
     display:flex;
