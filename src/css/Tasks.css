@@ -1,0 +1,35 @@
+.yes {
+  display: flex;
+  background-color: rgb(218, 233, 206);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.yes:hover {
+  background-color: rgb(156, 167, 146);
+}
+
+.yes:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}
+
+.no {
+  display: flex;
+  background-color: rgb(240, 218, 218);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.no:hover {
+  background-color: rgb(201, 181, 181);
+}
+
+.no:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}

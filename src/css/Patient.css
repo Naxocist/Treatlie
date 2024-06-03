@@ -1,7 +1,15 @@
-.patient_tasks_background {
+.patient_packets_background {
   background-color: rgb(248, 248, 255);
-  position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0;
+  /* position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0; */
+}
+
+.body {
+  background-color: rgb(248, 248, 255);
+}
+
+.link {
+  color: black;
 }
 
 .text {
@@ -34,7 +42,7 @@
   text-align: center;
 }
 
-.task {
+.packet {
   color: black;
   background-color: rgb(236, 237, 246);
   font-family: Arial, sans-serif;
@@ -56,7 +64,7 @@
   font-family: CourierNew, monospace; 
 }
 
-.logo_patient_tasks {
+.logo_patient_packets {
   color: black;
   display: flex;
 }
@@ -71,7 +79,7 @@
   transition: transform 0s;
 }
 
-.each_task {
+.each_packet {
   display: flex;
   background-color: rgb(255, 255, 255);
   border-radius: 11px;
@@ -80,16 +88,16 @@
   cursor: pointer;
 }
 
-.each_task:hover {
+.each_packet:hover {
   background-color: rgb(209, 209, 209);
 }
 
-.each_task:hover .pic {
+.each_packet:hover .pic {
   transition: transform 1s;
   transform: rotate(360deg);
 }
 
-.posture {
+.packet_name {
   margin: 25px;
   margin-right: 0px;
 }

@@ -1,4 +1,7 @@
 @import './index.css';
 @import './Login.css';
 @import './Options.css';
-@import "./Patient_Tasks.css"
+@import "./Patient.css";
+@import "./Doctor.css";
+@import "./Tasks.css";
+@import "./Webcam.css";

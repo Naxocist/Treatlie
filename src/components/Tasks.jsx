@@ -1,17 +1,14 @@
 import Header from "./Patient_Packet_components/Header.jsx"
-import NumPacketDone from "./Patient_Packet_components/NumPacketDone.jsx"
-import PacketList from "./Patient_Packet_components/PacketList.jsx"
 import Profile from "./Patient_Packet_components/Profile.jsx"
+import TasksList from "./Patient_Tasks_components/TasksList.jsx";
 
-function Patient() {
+function Tasks() {
   return(
     <div className="patient_packets_background">
       <Header/>
       <Profile/>
-      <NumPacketDone />
-      <PacketList/>
+      <TasksList/>
     </div>
   );
 }
-
-export default Patient;
+export default Tasks;

@@ -8,32 +8,35 @@ import {
 
 
 // import all jsx components
-import { Login, Options, Patient, Doctor, Patient_Tasks } from './components'
+import { Login, Options, Patient, Doctor, Tasks, Webcam } from './components'
 
 // import all css
 import './css/bundle.css'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <Login />,
   },
   {
-    path: '/options',
+    path: 'options',
     element: <Options />
   },
   {
-    path: '/patient',
+    path: 'patient',
     element: <Patient />
   },
   {
-    path: '/doctor',
+    path: 'doctor',
     element: <Doctor />
-  }
-  ,
+  },
   {
-    path: '/patient/tasks',
-    element: <Patient_Tasks />
+    path: 'patient/tasks/:packet_id',
+    element: <Tasks />
+  },
+  {
+    path: 'patient/tasks/:packet_id/webcam/:webcam_id',
+    element: <Webcam />
   }
 ]);
 
