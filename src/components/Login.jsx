@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import reactLogo from '../assets/react.svg'
+import Treatlie from '../assets/Treatlie-without-name.svg'
+import TreatlieName from '../assets/Treatlie-with-name.svg'
+import TreatlieTxt from '../assets/Treatlie-txt.svg'
 
 import { auth, db } from '../js/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
@@ -51,10 +53,12 @@ function Login() {
     <div className='center-wrap'>
       {/* <a href='https://react.dev' target='_blank'> */}
       <a>
-        <img src={reactLogo} className='logo' alt='React logo' />
+        <img src={Treatlie} className='logo' alt='Treatlie logo' />
       </a>
 
-      <h1 className='title'>Treatlie</h1>
+      <a>
+        <img src={TreatlieTxt} className='text' alt='Treatlie text' />
+      </a>
 
       <div className='card'>
         <button className="google-login-button" onClick={handleGoogle}>

@@ -24,7 +24,8 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
     <div className='bot-wrap'>
       <div className='bot-head'>
         <h1>Exercise Packs</h1>
-        <h4>Today: {simplifyDate(new Date)}</h4>
+        <h4>date format: day / month / year</h4>
+        {/* <h4>Today: {simplifyDate(new Date)}</h4> */}
       </div>
 
       <hr/>

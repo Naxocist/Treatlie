@@ -35,10 +35,13 @@ function Doctor() {
               const data = res.val()
               setPatientsInfo(data)
 
+              console.log(patientsUid)
+              console.log(usersInfo)
+              console.log(patientsInfo)
               setIsLoaded(true)
             })
           })
-    });
+        });
       } else {
         navigate('/')
         console.log("Error!")
@@ -55,7 +58,7 @@ function Doctor() {
 
           <section className='sidebar-wrap'>
             {
-              patientsUid.map(uid => (
+              Object.keys(patientsUid).map(uid => (
                 <PatientCard key={uid} name={usersInfo[uid]['name']} uid={uid} />
               ))
             }
@@ -66,7 +69,7 @@ function Doctor() {
                 <Outlet context={{patientsInfo, usersInfo}}/>
                 :
                 <div className='not-loaded-wrap'>
-                  <h1>Select a patient to observe his/her progress</h1>
+                  <h1>Select a patient to view his/her profile</h1>
                 </div>
             }
           </section>

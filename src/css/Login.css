@@ -7,20 +7,22 @@
   text-align: center;
 }
 
-.title {
-  font-size: 5em;
-  margin: 30px;
-  padding: 0;
-}
 
 .logo {
-  height: 10em;
+  height: 15em;
   will-change: filter;
   transition: filter 300ms;
-  animation: logo-spin 10s infinite
+  /* animation: logo-spin 10s infinite */
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 1px var(--logo-color-1));
+}
+.text {
+  height: 10em;
+  transition: filter 500ms;
+}
+.text:hover {
+  filter: drop-shadow(0 0 5px var(--logo-color-2));
 }
 
 @keyframes logo-spin {

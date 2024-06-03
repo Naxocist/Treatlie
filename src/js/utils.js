@@ -38,7 +38,7 @@ export function ISOtoString(dateIso) {
 export function simplifyDate(dateObj) {
   const dt = dayjs(dateObj)
 
-  return dt.format('ddd MMM YYYY')
+  return dt.format('d/M/YYYY')
 
 }
 

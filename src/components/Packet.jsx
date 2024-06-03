@@ -23,7 +23,7 @@ function Packet({hash, packet, uid, removeMode}) {
         {removeMode ?
           <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
             <div>
-              {created}
+              Assign on {created}
             </div>
             <div>
               Due {deadline}

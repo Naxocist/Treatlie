@@ -25,7 +25,7 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
 
       <div className='bot-head'>
         <h1>Exercises</h1>
-        <h4>Today: {simplifyDate(new Date)}</h4>
+        {/* <h4>Today: {simplifyDate(new Date)}</h4> */}
       </div>
 
       <hr/>

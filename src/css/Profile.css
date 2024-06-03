@@ -68,7 +68,7 @@
     margin: 1em;
     text-align: center;
     padding: 1em;
-    /* border-radius: 10px; */
+    border-radius: 50px;
     background-color: var(--cadet-grey);
     cursor: pointer;
 
