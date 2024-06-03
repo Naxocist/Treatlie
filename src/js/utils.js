@@ -1,8 +1,7 @@
 import dayjs from "dayjs"
 
 export function calculateAge(birthdayString) {
-  const dateObj = dayjs(birthdayString)
-
+  // const dateObj = dayjs(birthdayString)
   // const [year, month, day] = [dateObj.year(), dateObj.month(), dateObj.day()]
 
   

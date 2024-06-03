@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 
 function Options() {
   return (
-    <div className='center-wrap'>
+    <motion.div 
+      className='center-wrap'
+
+      initial={{opacity: 0}}
+      animate={{opacity: 1, transition: {duration: 1}}}
+      exit={{opacity: 0}}
+    >
       <h1 className='who-r-u'>Who are you?</h1>
 
       <div className='options-card'>
@@ -22,7 +29,7 @@ function Options() {
           </button>
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 }
 

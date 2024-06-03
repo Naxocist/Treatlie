@@ -18,11 +18,19 @@ function Profile() {
   const params = useParams()
   const { patientsInfo, usersInfo } = useOutletContext()
 
-  const uid = params.uid;
-  const name = usersInfo[uid]['name']
-  const birthdate = simplifyDate(usersInfo[uid]['birth-date'])
-  const packets = patientsInfo[uid]['packets']
+  const uid = params.uid
+  const info = usersInfo[uid]
+  const name = info['name']
+  const birthdate = simplifyDate(info['birth-date'])
+  const blood = info['blood']
+  const contact = info['contact']
+  const address = info['address']
+
+  const symtoms = info['symtoms']
+  const plan = info['plan']
   
+  const packets = patientsInfo[uid]['packets']
+
   const age = calculateAge(birthdate)
 
   return (
@@ -35,15 +43,26 @@ function Profile() {
           <div className='info-wrap'>
             <h1>{name}</h1>
             <div className='below-info-wrap'>
-              <h3 className='birth-date'>{birthdate}</h3>
-              <h3>{age}</h3>
+              <h3 >Birth of date: {birthdate}</h3>
+              <h3>Age: {age}</h3>
+            </div>
+            <div className='below-info-wrap'>
+              <h3 >Blood type: {blood}</h3>
+              <h3>Contact: {contact}</h3>
+            </div>
+            <div className='below-info-wrap'>
+              <h3>Address: {address}</h3>
             </div>
           </div>
       </div>
 
 
       <div className='desc'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quo autitem, temporibus ea dolore aliquid libero ipsam vel distinctio labore?</p>
+        <p>{symtoms}</p>
+      </div>
+
+      <div className='desc'>
+        <p><strong>Treatment Plan: </strong>{plan}</p>
       </div>
 
       {outletLoaded ?

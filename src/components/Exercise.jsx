@@ -2,8 +2,7 @@
 import { remove, ref } from 'firebase/database'
 import { db } from '../js/firebase'
 
-import { ISOtoString } from '../js/utils'
-
+import { motion } from 'framer-motion'
 function Exercise({uid, hash, exName, status, removeMode}) {
 
   const handleRemovePacket = () => {
@@ -16,7 +15,7 @@ function Exercise({uid, hash, exName, status, removeMode}) {
   }
 
   return (
-    <>
+    <div>
       {removeMode ?
         <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
           <div>
@@ -30,7 +29,7 @@ function Exercise({uid, hash, exName, status, removeMode}) {
           </div>
         </button>
       }
-    </>
+    </div>
   )
 }
 

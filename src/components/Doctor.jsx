@@ -8,12 +8,13 @@ import { ref, onValue } from 'firebase/database'
 import PatientCard from './PatientCard'
 import { CircularProgress } from '@mui/material'
 
+import { motion } from 'framer-motion'
 
 function Doctor() {
 
-  const [patientsUid, setPatientsUid] = useState([])
-  const [usersInfo, setUsersInfo] = useState({})
-  const [patientsInfo, setPatientsInfo] = useState({})
+  const [patientsUid, setPatientsUid] = useState(null)
+  const [usersInfo, setUsersInfo] = useState(null)
+  const [patientsInfo, setPatientsInfo] = useState(null)
   const [isLoaded, setIsLoaded] = useState(false)
   
 
@@ -23,25 +24,24 @@ function Doctor() {
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
+
         onValue(ref(db, `doctors/${auth.currentUser.uid}/patient-list`), res => {
           const data = res.val()
           setPatientsUid(data)
 
-          onValue(ref(db, 'info/'), res => {
-            const data = res.val()
-            setUsersInfo(data)
-
-            onValue(ref(db, 'patients/'), res => {
-              const data = res.val()
-              setPatientsInfo(data)
-
-              console.log(patientsUid)
-              console.log(usersInfo)
-              console.log(patientsInfo)
-              setIsLoaded(true)
-            })
-          })
         });
+
+        onValue(ref(db, 'info/'), res => {
+          const data = res.val()
+          setUsersInfo(data)
+
+        })
+
+        onValue(ref(db, 'patients/'), res => {
+          const data = res.val()
+          setPatientsInfo(data)
+
+        })
       } else {
         navigate('/')
         console.log("Error!")
@@ -49,8 +49,25 @@ function Doctor() {
     })
   }, [])
 
+  useEffect(() => {
+
+    if(!usersInfo || !patientsUid || !patientsInfo) return 
+
+    // console.log(usersInfo)
+    // console.log(patientsUid)
+    // console.log(patientsInfo)
+
+    setIsLoaded(true)
+
+  }, [usersInfo, patientsUid, patientsInfo])
+
   return (
-    <>
+    <motion.div
+
+      initial={{opacity: 0}}
+      animate={{opacity: 1, transition: {duration: 1}}}
+      exit={{opacity: 0}}
+    >
       {isLoaded ?
         // loaded
         <div className='doc-wrap'>
@@ -80,7 +97,7 @@ function Doctor() {
           <CircularProgress />
         </div>
       }
-    </>
+    </motion.div>
   )
 }
 

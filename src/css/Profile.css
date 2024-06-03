@@ -29,15 +29,21 @@
     flex-direction: column;
     justify-content: center;
 }
+.info-wrap>* {
+    margin: 5px;
+}
+.info-wrap>*>* {
+    margin: 0;
+}
 .below-info-wrap {
     display: flex;
 }
-.birth-date {
+.below-info-wrap>:first-child {
     margin-right: 1em;
 }
 
 .desc {
-    width: 40vw;
+    max-width: 40vw;
     margin: 0 auto;
 }
 
@@ -57,6 +63,9 @@
     text-align: center;
     /* background-color: aqua; */
 }
+.bot-list-wrap>div{
+    margin: 1em;
+}
 
 .btn-reset {
     all: unset;
@@ -65,7 +74,8 @@
 }
 
 .list-nm-wrap, .list-rm-wrap {
-    margin: 1em;
+    width: 100%;
+    /* margin: 1em; */
     text-align: center;
     padding: 1em;
     border-radius: 50px;

@@ -7,7 +7,10 @@ import { auth, db } from '../js/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { get, ref } from 'firebase/database'
 
+import { motion } from 'framer-motion'
+
 import google from '../assets/google.png'
+
 
 function Login() {
 
@@ -50,7 +53,11 @@ function Login() {
   }
 
   return (
-    <div className='center-wrap'>
+    <motion.div className='center-wrap'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1, transition: { duration: 1 } }}
+      exit={{ opacity: 0 }}
+    >
       {/* <a href='https://react.dev' target='_blank'> */}
       <a>
         <img src={Treatlie} className='logo' alt='Treatlie logo' />
@@ -75,7 +82,7 @@ function Login() {
       <p className='desc-login'>
         Enhances medical communication experiences
       </p>
-    </div>
+    </motion.div>
   )
 }
 

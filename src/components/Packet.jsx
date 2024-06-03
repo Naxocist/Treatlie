@@ -4,6 +4,8 @@ import { db } from "../js/firebase"
 
 import { NavLink } from "react-router-dom"
 
+import { motion } from 'framer-motion'
+
 function Packet({hash, packet, uid, removeMode}) {
 
     const handleRemovePacket = () => {
@@ -19,7 +21,7 @@ function Packet({hash, packet, uid, removeMode}) {
     const deadline = convertDeadline(packet['deadline'])
 
     return (
-      <>
+      <div >
         {removeMode ?
           <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
             <div>
@@ -39,7 +41,7 @@ function Packet({hash, packet, uid, removeMode}) {
             </div>
           </NavLink>
         }
-      </>
+      </div>
     )
 }
 
