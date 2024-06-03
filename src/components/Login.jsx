@@ -5,6 +5,7 @@ import { auth, db } from '../js/firebase'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { get, ref } from 'firebase/database'
 
+import google from '../assets/google.png'
 
 function Login() {
 
@@ -25,19 +26,19 @@ function Login() {
         const info = res.val();
         // console.log(value);
 
-        if (info.role == "admin") 
+        if (info.role == 'admin') 
           navigate('options')
         
 
-        if(info.role == "patient") 
+        if(info.role == 'patient') 
           navigate('patient')
 
-        if(info.role == "doctor") 
+        if(info.role == 'doctor') 
           navigate('doctor')
 
       } else {
         // New user
-        console.log("New user")
+        console.log('New user')
 
         navigate('input')
       }
@@ -48,18 +49,22 @@ function Login() {
 
   return (
     <div className='center-wrap'>
-      <div>
-        <a href='https://react.dev' target='_blank'>
-          <img src={reactLogo} className='logo' alt='React logo' />
-        </a>
-      </div>
+      {/* <a href='https://react.dev' target='_blank'> */}
+      <a>
+        <img src={reactLogo} className='logo' alt='React logo' />
+      </a>
 
       <h1 className='title'>Treatlie</h1>
 
-
       <div className='card'>
-        <button className='btn' onClick={handleGoogle}>
-          Login with Google
+        <button className="google-login-button" onClick={handleGoogle}>
+          <img
+            // src="https://developers.google.com/identity/images/g-logo.png"
+            src={google}
+            alt="Google Logo"
+            className="google-logo"
+          />
+          Sign in with Google
         </button>
       </div>
 

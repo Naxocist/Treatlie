@@ -29,22 +29,19 @@ body {
   margin: 0;
 }
 
-.center-wrap {
-  text-align: center;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  color: inherit; 
+  text-decoration: none; 
+  background: none; 
+  padding: 0; 
+  margin: 0; 
+  border: none; 
+  font-size: inherit; 
+  font-family: inherit; 
+  font-weight: inherit; 
+  line-height: inherit; 
+  display: inline; 
 }
 
 

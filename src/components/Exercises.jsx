@@ -43,7 +43,7 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
               />
             ))
             :
-            <h2>There are no packets</h2>
+            <h2>There are no execises</h2>
         }
       </div>
 

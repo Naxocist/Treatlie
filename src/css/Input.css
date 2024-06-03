@@ -1,0 +1,32 @@
+.input-wrap {
+    width: 50vw;
+    height: 100vh;
+    margin: 3em auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 2em;
+    align-items: center;
+    box-shadow: 0px 0px 20px 2px var(--primary-grey);
+}
+
+.form-wrap {
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+.name {
+    width: 300px;
+    height: 500px;
+}
+
+.name-wrap, .date-wrap {
+    display: flex;
+    margin: 1.5em 2em;
+    justify-content: center;
+}
+
+.submit-wrap {
+    display:flex;
+    justify-content: center;
+}

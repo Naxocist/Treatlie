@@ -43,17 +43,29 @@ function Input() {
 
   return (
     <div className='input-wrap'>
-      <TextField id="outlined-basic" label="Full Name" variant="outlined" onChange={(e) => setName(e.target.value)}/> 
 
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <DatePicker onChange={(val) => {
-          setDate(dayjs(val).toISOString())
-        }} />
-      </LocalizationProvider>
+      <div className='form-wrap'>
 
-      <Button variant="contained" color="success" onClick={handleSubmit}>
-        Submit
-      </Button>
+        <div className='name-wrap'>
+          <TextField id="standard-basic" label="Full Name" variant="standard" onChange={(e) => setName(e.target.value)} className='name' />
+        </div>
+
+        <div className='date-wrap'>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DatePicker onChange={(val) => {
+              setDate(dayjs(val).toISOString())
+            }} className='date'/>
+          </LocalizationProvider>
+        </div>
+      </div>
+
+      <div className='submit-wrap'>
+        <Button variant="contained" color="success" onClick={handleSubmit} className='submit' sx={{
+          fontSize: '1.25em'
+        }}>
+          submit
+        </Button>
+      </div>
     </div>
   )
 }

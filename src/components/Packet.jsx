@@ -32,7 +32,7 @@ function Packet({hash, packet, uid, removeMode}) {
           :
           <NavLink to={'packet/' + hash} className='list-nm-wrap btn-reset'>
             <div>
-              Assign: {created}
+              Assign on {created}
             </div>
             <div>
               Due  {deadline}

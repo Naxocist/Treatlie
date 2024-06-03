@@ -37,7 +37,7 @@ function Popup({uid, hash, setPopUp}) {
   return (
     <div className='popup-wrap'>
       <div className='popup'>
-        <h1>Choose an exercise</h1>
+        <h1>Add an exercise</h1>
 
         <Autocomplete
           disablePortal
