@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ref, onValue, push, get } from 'firebase/database';
+import { Link } from 'react-router-dom'
 import { db } from '../js/firebase';
 import '../css/bundle.css';
 
@@ -19,7 +20,7 @@ const PatientChat = ({ currentUserId }) => {
 
     fetchPairedDoctorId();
   }, [currentUserId]);
-  console.log(chatPartnerId);
+
   useEffect(() => {
     if (chatPartnerId) {
       const chatRoomId = [currentUserId, chatPartnerId].sort().join('_');
@@ -54,6 +55,7 @@ const PatientChat = ({ currentUserId }) => {
 
   return (
     <div className="chat-container">
+      <Link to='../patient' className='back-button'>Patient</Link>
       <h1 className="chat-title">Chat with doctors</h1>
       <ul className="message-list">
         {messages.map((message) => (

@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
-import { db } from '../js/firebase'; // Ensure this imports the initialized Firebase app
+import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom'
+import { db } from '../js/firebase';
 import '../css/bundle.css';
 
 const DoctorChat = ({ currentUserId }) => {
@@ -9,6 +11,7 @@ const DoctorChat = ({ currentUserId }) => {
   const [selectedPatientId, setSelectedPatientId] = useState('');
   const [chatRoomId, setChatRoomId] = useState('');
   const [patients, setPatients] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (currentUserId) {
@@ -29,9 +32,7 @@ const DoctorChat = ({ currentUserId }) => {
             })
           );
 
-          Promise.all(patientPromises).then((patientList) => {
-            setPatients(patientList);
-          });
+          Promise.all(patientPromises).then(setPatients);
         }
       });
     }
@@ -60,24 +61,36 @@ const DoctorChat = ({ currentUserId }) => {
     }
   }, [chatRoomId]);
 
-  const handleMessageSubmit = (event) => {
-    event.preventDefault();
-    if (!chatRoomId) {
-      console.error('No chat room selected.');
-      return;
-    }
-    const messageRef = ref(getDatabase(), `chatrooms/${chatRoomId}/messages`);
-    const message = {
-      senderId: currentUserId,
-      content: newMessage,
-      timestamp: Date.now(),
-    };
-    push(messageRef, message);
-    setNewMessage('');
-  };
+  const handleMessageSubmit = useCallback(
+    (event) => {
+      event.preventDefault();
+      if (!chatRoomId || !newMessage.trim()) {
+        console.error('No chat room selected or message is empty.');
+        return;
+      }
+      const messageRef = ref(getDatabase(), `chatrooms/${chatRoomId}/messages`);
+      const message = {
+        senderId: currentUserId,
+        content: newMessage,
+        timestamp: Date.now(),
+      };
+      push(messageRef, message);
+      setNewMessage('');
+    },
+    [chatRoomId, currentUserId, newMessage]
+  );
+
+  const patientOptions = useMemo(() => {
+    return patients.map((patient) => (
+      <option key={patient.id} value={patient.id}>
+        {patient.name}
+      </option>
+    ));
+  }, [patients]);
 
   return (
     <div className="chat-container">
+      <Link to='../doctor' className='back-button'>Doctor</Link>
       <h1 className="chat-title">Doctor Chat</h1>
       <div>
         <label htmlFor="patientSelect">Select a patient to chat with: </label>
@@ -85,14 +98,12 @@ const DoctorChat = ({ currentUserId }) => {
           id="patientSelect"
           value={selectedPatientId}
           onChange={(e) => setSelectedPatientId(e.target.value)}
+          className="patient-select"
         >
           <option value="">Select...</option>
-          {patients.map((patient) => (
-            <option key={patient.id} value={patient.id}>{patient.name}</option>
-          ))}
+          {patientOptions}
         </select>
       </div>
-      <br></br>
       <ul className="message-list">
         {messages.map((message) => (
           <li key={message.id} className={`message-item ${message.senderId === currentUserId ? 'sent' : 'received'}`}>
