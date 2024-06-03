@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { getDatabase, ref, onValue, push } from 'firebase/database';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import { db } from '../js/firebase';
 import '../css/bundle.css';
 
@@ -87,12 +87,12 @@ const DoctorChat = ({ currentUserId }) => {
       </option>
     ));
   }, [patients]);
-
+  
   return (
     <div className="chat-container">
       <Link to='../doctor' className='back-button'>Doctor</Link>
       <h1 className="chat-title">Doctor Chat</h1>
-      <div>
+      <div className="patient-select-container">
         <label htmlFor="patientSelect">Select a patient to chat with: </label>
         <select
           id="patientSelect"

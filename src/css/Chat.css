@@ -11,7 +11,10 @@
 body, html {
   height: 100%;
   margin: 0;
+  justify-content: center;
+  align-items: center;
   font-family: Arial, sans-serif;
+  overflow: hidden;
 }
 
 .chat-container {
@@ -24,7 +27,7 @@ body, html {
   box-shadow: 0 4px 15px var(--shadow-color);
   display: flex;
   flex-direction: column;
-  height: 80vh;
+  height: 550px;
 }
 
 .chat-header {
@@ -187,7 +190,16 @@ body, html {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Media Queries */
+.patient-select-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.patient-select-container label {
+  margin-right: 10px;
+}
+
 @media (max-width: 600px) {
   .chat-container {
     margin: 10px;
