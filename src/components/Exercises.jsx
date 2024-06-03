@@ -1,13 +1,12 @@
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 import { ISOtoString } from "../js/utils"
-
-import { db } from "../js/firebase"
-import { set, ref } from "firebase/database"
 
 import Exercise from "./Exercise"
 import Popup from './Popup'
 import { useState } from "react"
+
+import { simplifyDate } from "../js/utils"
 
 
 function Exercises({uid, packets, removeMode, setRemoveMode}) {
@@ -17,25 +16,39 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
   const hash = params['hash']
   const packet = packets[hash]
   const exercises = packet['exercises']
+  const deadline = simplifyDate(packet['deadline'])
 
 
   return (
     <>
       { popUp && <Popup uid={uid} hash={hash} setPopUp={setPopUp}/> }
 
-      <div className='ex-head'>
+      <div className='bot-head'>
         <h1>Exercises</h1>
+        <h4>Today: {simplifyDate(new Date)}</h4>
       </div>
 
-      <div className='ex-wrap'>
+      <hr/>
 
-        <div>
-          
-          <h2>Today: {ISOtoString((new Date).toISOString())}</h2>
-        </div>
+      <div className='bot-list-wrap'>
+        { exercises ?
+            Object.entries(exercises).map(([exName, status]) => (
+              <Exercise
+                key={exName}
+                uid={uid}
+                hash={hash}
+                exName={exName}
+                status={status}
+                removeMode={removeMode}
+              />
+            ))
+            :
+            <h2>There are no packets</h2>
+        }
+      </div>
 
-        <div className='buttons-group-wrap'>
-          <div className='ex-toggle'>
+      <div className='bot-btns-wrap'>
+          <div className='filter-toggle'>
             <button className='btn'>filter DONE</button>
           </div>
           <div className='add-packets'>
@@ -52,25 +65,6 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
             </button>
           </div>
         </div>
-
-        <div className='packets-wrap'>
-          {
-              exercises ?
-                Object.entries(exercises).map(([exName, status]) => (
-                  <Exercise
-                    key={exName}
-                    uid={uid}
-                    hash={hash}
-                    exName={exName}
-                    status={status}
-                    removeMode={removeMode}
-                    />
-                ))
-                :
-                <></>
-            }
-          </div>
-      </div>
     </>
   )
 }

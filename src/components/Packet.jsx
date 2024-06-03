@@ -1,5 +1,5 @@
 import { ref, remove } from "firebase/database"
-import { ISOtoString } from "../js/utils"
+import { ISOtoString, convertDeadline } from "../js/utils"
 import { db } from "../js/firebase"
 
 import { NavLink } from "react-router-dom"
@@ -15,22 +15,29 @@ function Packet({hash, packet, uid, removeMode}) {
         }
     }
 
+    const created = ISOtoString(packet['created'])
+    const deadline = convertDeadline(packet['deadline'])
+
     return (
       <>
         {removeMode ?
-          <button className='btn-reset btn-remove' onClick={handleRemovePacket}>
-            <div className='packet-wrap'>
-              {ISOtoString(packet['created'])}
+          <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
+            <div>
+              {ISOtoString(created)}
+            </div>
+            <div>
+              {ISOtoString(deadline)}
             </div>
           </button>
           :
-          <button className='btn-reset btn-norm'>
-            <NavLink to={'packet/' + hash}>
-              <div className='packet-wrap'>
-                {ISOtoString(packet['created'])}
-              </div>
-            </NavLink>
-          </button>
+          <NavLink to={'packet/' + hash} className='list-nm-wrap btn-reset'>
+            <div>
+              Assign: {created}
+            </div>
+            <div>
+              Due  {deadline}
+            </div>
+          </NavLink>
         }
       </>
     )

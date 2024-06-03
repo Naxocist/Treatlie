@@ -8,6 +8,8 @@ import { calculateAge } from '../js/utils'
 import Exercises from './Exercises';
 import Packets from './Packets';
 
+import { simplifyDate } from '../js/utils';
+
 
 function Profile() {
   const [removeMode, setRemoveMode] = useState(false)
@@ -18,16 +20,16 @@ function Profile() {
 
   const uid = params.uid;
   const name = usersInfo[uid]['name']
-  const birthdate = usersInfo[uid]['birth-date']
+  const birthdate = simplifyDate(usersInfo[uid]['birth-date'])
   const packets = patientsInfo[uid]['packets']
   
   const age = calculateAge(birthdate)
 
   return (
-    <>
+    <div className='profile-wrap'>
       <div className='tp-wrap'>
           <div className='pfp-wrap'>
-            <img className='pfp' src={unknown}></img>
+            <img src={unknown}></img>
           </div>
 
           <div className='info-wrap'>
@@ -41,7 +43,7 @@ function Profile() {
 
 
       <div className='desc'>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quo autem, temporibus ea dolore aliquid libero ipsam vel distinctio labore?</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt quo autitem, temporibus ea dolore aliquid libero ipsam vel distinctio labore?</p>
       </div>
 
       {outletLoaded ?
@@ -59,7 +61,7 @@ function Profile() {
           setRemoveMode={setRemoveMode}
         />
       }
-    </>
+    </div>
   )
 }
 

@@ -52,6 +52,7 @@ function Doctor() {
         // loaded
         <div className='doc-wrap'>
           <section className='place-holder'></section>
+
           <section className='sidebar-wrap'>
             {
               patientsUid.map(uid => (
@@ -59,6 +60,7 @@ function Doctor() {
               ))
             }
           </section>
+
           <section className='outlet-wrap'>
             { outletLoaded ?
                 <Outlet context={{patientsInfo, usersInfo}}/>

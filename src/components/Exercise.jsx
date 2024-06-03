@@ -18,14 +18,14 @@ function Exercise({uid, hash, exName, status, removeMode}) {
   return (
     <>
       {removeMode ?
-        <button className='btn-reset btn-remove' onClick={handleRemovePacket}>
-          <div className='packet-wrap exercise-wrap'>
+        <button onClick={handleRemovePacket} className='list-rm-wrap btn-reset'>
+          <div>
             {exName}
           </div>
         </button>
         :
-        <button className='btn-reset'>
-          <div className='packet-wrap'>
+        <button className='list-nm-wrap btn-reset'>
+          <div>
             {exName}
           </div>
         </button>

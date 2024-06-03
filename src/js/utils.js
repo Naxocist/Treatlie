@@ -16,7 +16,7 @@ export function calculateAge(birthdayString) {
   
   const monthDifference = today.getMonth() - birthday.getMonth()
   const dayDifference = today.getDate() - birthday.getDate()
-  console.log(monthDifference, dayDifference)
+  // console.log(monthDifference, dayDifference)
   
   if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
     age--
@@ -33,4 +33,29 @@ export function ISOtoString(dateIso) {
   const year = date.getFullYear();
 
   return `${day}/${month}/${year}`;
+}
+
+export function simplifyDate(dateObj) {
+  const dt = dayjs(dateObj)
+
+  return dt.format('dddd MMM YYYY')
+
+}
+
+export function convertDeadline(dateISO) {
+
+  const day1 = dayjs()
+  const day2 = dayjs(dateISO)
+
+  const dayDifference = day2.diff(day1, 'day')
+
+  if(dayDifference === 0) {
+    return "Today"
+  }
+
+  if(dayDifference === 1) {
+    return "Tomorrow"
+  }
+
+  return `in ${dayDifference} days`
 }

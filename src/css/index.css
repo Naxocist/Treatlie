@@ -17,9 +17,11 @@
   --primary-red: #FF9FB2;
   --primary-pink: #FBDCE2;
   --primary-green: #60AB9A;
-  --primary-grey: #DEDEE0;
+  --primary-grey: #D9DCD6;
   --primary-orange: ##F37748;
   --darkblue: #094D92;
+  --davy-grey: #4D5061;
+  --cadet-grey: #9AADBF;
 }
 
 
@@ -47,20 +49,26 @@ a:hover {
 
 
 .btn {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 3px solid transparent;
+
   font-size: 1em;
-  font-weight: 500;
+  font-weight: 400;
   font-family: inherit;
-  background-color: #1a1a1a;
+
+  background-color: white;
+
+  color: black;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color .5s;
 }
+
 .btn:hover {
-  border-color: #646cff;
-}
-.btn:focus,
+  border-color: var(--primary-blue);
+} 
+
+/* .btn:focus,
 .btn:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+}  */

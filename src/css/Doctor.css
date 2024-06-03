@@ -7,7 +7,15 @@
     width: 20vw;
     background-color: red;
 }
-/* left section */
+
+
+/* right section */
+.outlet-wrap {
+    flex-grow: 1;
+}
+
+
+/* sidebar */
 .sidebar-wrap {
     width: 20vw;
     height: 100vh;
@@ -15,109 +23,9 @@
     display: block;
     position: fixed;
     padding-top: 1em;
+    overflow: auto;
 }
 
-/* right section */
-.outlet-wrap {
-    flex-grow: 1;
-}
-
-/* patient's info*/
-.tp-wrap {
-    height: 30vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* profile pic  */
-.pfp-wrap {
-    margin-right: 3em;
-    width: 10vw;
-}
-.pfp {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    border-radius: 50%;
-}
-
-/* text info */
-.info-wrap {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.below-info-wrap {
-    display: flex;
-}
-.birth-date {
-    margin-right: 1em;
-}
-
-.desc {
-    width: 40vw;
-    margin: auto;
-}
-
-/* exercise list */
-.ex-wrap {
-    width: 50vw;
-    margin: 0 auto;
-    padding: 2em;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(163, 163, 163, 0.2);
-    border-radius: 10px;
-    text-align: center;
-}
-.ex-head {
-    font-size: 2em;
-    text-align: center;
-}
-
-.buttons-group-wrap {
-    display: flex;
-    justify-content: space-around;
-    margin: 1em 0;
-}
-.buttons-group-wrap>div {
-    width: 10vw;
-    margin: 0 1em;
-}
-
-
-.packets-wrap {
-    /* background-color: blue; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.packet-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-.btn-reset {
-    font-size: 1.5em;
-    background: none;
-    border: 1px solid white;
-    border-radius: 5px;
-    padding: 0;
-    margin: 1em;
-    cursor: pointer;
-    outline: none;
-}
-.btn-remove:hover {
-    background-color: red;
-}
-.btn-norm:hover {
-    background-color: grey;
-}
-
-/* sidebar */
 .p-card {
     box-sizing: border-box;
     width: 75%;
@@ -127,7 +35,7 @@
     color: black;
     font-size: 1rem;
     border-radius: 100px;
-    background-color: antiquewhite;
+    background-color: white;
     transition: transform 0.3 ease;
 }
 .p-card:hover {
@@ -146,12 +54,6 @@
 }
 
 
-/* sidebar */
-.sidebar-wrap {
-    overflow: auto;
-}
-
-
 /* when outlet is not loaded yet*/
 .not-loaded-wrap {
     height: 100vh;
@@ -167,36 +69,4 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-}
-
-.popup-wrap {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    background-color: rgba(0, 0, 0, .5);
-}
-.popup {
-    background-color: burlywood;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 1em;
-    border-radius: 5px;
-}
-.popup>h1 {
-    font-size: xx-large;
-}
-.popup-btn-wrap {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 1em;
-}
-.popup-tf-wrap {
-    margin: 2em 0;
-    display: flex;
-    justify-content: center;
 }
