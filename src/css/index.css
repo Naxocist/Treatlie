@@ -19,7 +19,9 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary-blue: #0ACDFF;
-  --primary-red: #FF9FB2;
+  --secondary-blue: #7AB9E1;
+  --primary-red: #fcb7c5;
+  --secondary-red: #f59daf;
   --primary-pink: #FBDCE2;
   --primary-green: #60AB9A;
   --primary-grey: #D9DCD6;

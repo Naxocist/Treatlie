@@ -1,15 +1,35 @@
 :root {
   --primary-color: #7ab9e1;
   --secondary-color: #84a59d;
-  --background-color: #f7ede2;
+  /* --background-color: #f7ede2; */
   --border-color: #ccc;
   --shadow-color: rgba(0, 0, 0, 0.1);
-  --scrollbar-track-color: #f7ede2;
+  --scrollbar-track-color: white;
   --scrollbar-thumb-color: #7ab9e1;
 }
 
-.chat-button:hover {
+.chat-button>button {
+  appearance: none;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  outline: none;
   cursor: pointer;
+}
+.chat-button {
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  background-color: #eccefa;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.chat-button:hover {
+  background-color: #e5bbf9;
 }
 
 .chat-container {

@@ -35,10 +35,12 @@
 .info-wrap>*>* {
     margin: 0;
 }
+
 .below-info-wrap {
     display: flex;
+    align-items: center;
 }
-.below-info-wrap>:first-child {
+.below-info-wrap>:first-child{
     margin-right: 1em;
 }
 
@@ -100,7 +102,7 @@
     padding: 20px 40px;
 
     border-radius: 10px;
-    background-color: var(--primary-pink);
+    background-color: var(--primary-red);
     cursor: pointer;
 
     font-size: 1.25em;
@@ -113,7 +115,7 @@
     animation: gentle-up-down 0.7s ease;
 }
 .list-rm-wrap:hover {
-    background-color: var(--primary-red);
+    background-color: var(--secondary-red);
 }
 
 

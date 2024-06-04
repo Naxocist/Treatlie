@@ -58,7 +58,6 @@ function Login() {
       animate={{ opacity: 1, transition: { duration: 1 } }}
       exit={{ opacity: 0 }}
     >
-      {/* <a href='https://react.dev' target='_blank'> */}
       <a>
         <img src={Treatlie} className='logo' alt='Treatlie logo' />
       </a>
@@ -70,7 +69,6 @@ function Login() {
       <div className='card'>
         <button className="google-login-button" onClick={handleGoogle}>
           <img
-            // src="https://developers.google.com/identity/images/g-logo.png"
             src={google}
             alt="Google Logo"
             className="google-logo"

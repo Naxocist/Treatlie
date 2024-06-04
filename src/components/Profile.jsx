@@ -49,25 +49,29 @@ function Profile() {
             <img src={unknown}></img>
           </div>
 
-          <div className='info-wrap'>
+        <div className='info-wrap'>
+          <div className='below-info-wrap'>
             <h1>{name}</h1>
-            <div className='below-info-wrap'>
-              <p>Birth of date: {birthdate}</p>
-              <p>Age: {age}</p>
-            </div>
-            <div className='below-info-wrap'>
-              <p >Blood type: {blood}</p>
-              <p>Contact: {contact}</p>
-            </div>
-            <div className='below-info-wrap'>
-              <p>Address: {address}</p>
-            </div>
-            <div className='below-info-wrap'>
-            <div>
-              <button className="chat-button" onClick={handleChat}>Chat with {name}</button>
-            </div>
+            <div className='chat-button'>
+              <button onClick={handleChat}>
+                Chat
+              </button>
             </div>
           </div>
+          <div className='below-info-wrap'>
+            <p>Birth of date: {birthdate}</p>
+            <p>Age: {age}</p>
+          </div>
+          <div className='below-info-wrap'>
+            <p >Blood type: {blood}</p>
+            <p>Contact: {contact}</p>
+          </div>
+          <div className='below-info-wrap'>
+            <p>Address: {address}</p>
+          </div>
+          <div className='below-info-wrap'>
+          </div>
+        </div>
       </div>
 
 
@@ -80,14 +84,14 @@ function Profile() {
       </div>
 
       {outletLoaded ?
-        <Exercises 
+        <Exercises
           uid={uid}
           packets={packets}
           removeMode={removeMode}
           setRemoveMode={setRemoveMode}
         />
         :
-        <Packets 
+        <Packets
           uid={uid}
           packets={packets}
           removeMode={removeMode}
