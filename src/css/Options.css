@@ -1,3 +1,12 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    margin: 0;
+}
+
 .who-r-u {
     font-size: 5em;
     margin: 0;

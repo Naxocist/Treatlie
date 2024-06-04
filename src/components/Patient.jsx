@@ -1,22 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth } from '../js/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import '../css/bundle.css';
 
-function Patient() {
-  useEffect(() => {
-    onAuthStateChanged(auth, user => {
-      if(user) {
-        console.log(user.uid)
-      }else {
-        location.assign('/')
-        console.log("Error!")
-      }
-    })
-  }, [])
+const Patient = () => {
+  const navigate = useNavigate();
+
+  const handleChat = () => {
+    const currentUserId = auth.currentUser.uid;
+    navigate(`/patientchat/${currentUserId}`);
+  };
 
   return (
-    <div>Patient</div>
-  )
-}
+    <div>
+      <button className="chat-button" onClick={() => handleChat()}>Chat with Doctors</button>
+    </div>
+  );
+};
 
-export default Patient
+export default Patient;

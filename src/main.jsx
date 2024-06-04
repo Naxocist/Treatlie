@@ -1,15 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-
-import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom';
 
 import { AnimatePresence } from 'framer-motion';
 
 // jsx components
-import { Login, Options, Patient, Doctor, Input, NotFound, Profile, Exercises} from './components'
+import { Login, Options, Patient, Doctor, Input, NotFound, Profile, Exercises, DoctorChat, PatientChat} from './components'
 
 // css
-import './css/bundle.css'
+import './css/bundle.css';
 
 
 
@@ -46,9 +45,26 @@ const router = createBrowserRouter([
   {
     path: 'input',
     element: <Input />
+  },
+  {
+    path: '/patientchat/:currentUserId',
+    element: <PatientChatWrapper />
+  },
+  {
+    path: '/doctorchat/:currentUserId',
+    element: <DoctorChatWrapper />
   }
 ]);
 
+function PatientChatWrapper() {
+  const { currentUserId } = useParams();
+  return <PatientChat currentUserId={currentUserId} />;
+}
+
+function DoctorChatWrapper() {
+  const { currentUserId } = useParams();
+  return <DoctorChat currentUserId={currentUserId} />;
+}
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -56,4 +72,4 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <RouterProvider router={router} />
     </AnimatePresence>
   </React.StrictMode>
-)
+);

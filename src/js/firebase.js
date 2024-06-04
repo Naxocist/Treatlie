@@ -2,7 +2,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getDatabase } from "firebase/database";
 
-
 const firebaseConfig = {
   apiKey: `${process.env.FIREBASE_GOOGLE_API_KEY}`,
   authDomain: "treatlie.firebaseapp.com",
@@ -11,10 +10,9 @@ const firebaseConfig = {
   storageBucket: "treatlie.appspot.com",
   messagingSenderId: "679615773376",
   appId: "1:679615773376:web:15d6fd8386060b24654b25",
-  measurementId: "G-L89WEH5LEV"
+  measurementId: "G-L89WEH5LEV",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
