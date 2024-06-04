@@ -6,8 +6,9 @@
   color: black;
   font-family: Arial, sans-serif;
   text-align: center;
-  border: 20px solid;
-  border-color: rgb(236, 237, 246);
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  /* border: 1px solid; */
+  border-color: var(--devy-grey);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -15,11 +16,11 @@
   width: 90%;
   max-width: 455px;
   padding: 12px;
-  border-radius: 11px;
+  border-radius: 20px;
   font-size: 30px;
   margin: auto;
   background-color: rgb(255, 255, 255);
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .done {
@@ -36,7 +37,8 @@
 
 .packet {
   color: black;
-  background-color: var(--primary-blue);
+  font-size: 20px;
+  background-color: rgba(236,237,246,255);
   font-family: Arial, sans-serif;
   text-align: center;
   align-self: center;
@@ -46,10 +48,11 @@
   border-radius: 11px;
   margin: auto;
   margin-top: 2%;
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 100px;
+  margin-right: 100px;
   justify-items: center;
   padding: 10px;
+
 }
 
 .header {
@@ -83,7 +86,8 @@
 }
 
 .each_packet:hover {
-  background-color: var(--primary-grey);
+  color: black;
+  background-color: rgb(181, 178, 178);
 }
 
 .each_packet:hover .pic {
@@ -100,4 +104,22 @@
   margin: 25px;
   margin-right: 10px;
   margin-left: auto;
+}
+
+.profile-box {
+  padding: 25px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: rgba(9, 9, 10, 0.2) 0px 7px 29px 0px;
+  background-color: #F7EDE2;
+  /* border-radius: 20px; */
+  /* border: 1px solid var(--primary-grey); */
+}
+
+.packet-title {
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+  
 }

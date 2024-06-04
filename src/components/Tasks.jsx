@@ -5,8 +5,10 @@ import TasksList from "./Patient_Tasks_components/TasksList.jsx";
 function Tasks() {
   return(
     <div className="patient_packets_background">
-      <Header/>
-      <Profile/>
+      {/* <Header/> */}
+      <div className="profile-box">
+        <Profile/>
+      </div>
       <TasksList/>
     </div>
   );

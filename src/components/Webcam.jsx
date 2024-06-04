@@ -22,6 +22,7 @@ let navigate;
 
 let posture_name;
 let packet_name;
+let patient_id;
 let done;
 let setDone;
 let goal;
@@ -55,6 +56,20 @@ let canvasElement = null;
 let canvasCtx = null;
 let video;
 let drawingUtils = null;
+
+function updateStatus() {
+  if(done === goal) {
+    let updates = {};
+    setStatus(status+1);
+    updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = status;
+    update(ref(db), updates);
+  }
+
+  if(done >= goal) {
+    console.log('done');
+    navigate(`/patient/${patient_id}`);
+  }
+}
 
 function enableCam(event) {
   video = document.getElementById("webcam")
@@ -116,11 +131,13 @@ async function predictWebcam() {
         if(posture1 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture1;
+          updateStatus();
         }else if((posture1 !== previous && posture1 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture1;
+          updateStatus();
         }
-        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
       }else if(posture_name === "right_leg_raise") {
         let updates = {};
@@ -128,11 +145,13 @@ async function predictWebcam() {
         if(posture2 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture2;
+          updateStatus();
         }else if((posture2 !== previous && posture2 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture2;
+          updateStatus();
         }
-        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
       }else if(posture_name === "left_leg_raise") {
         let updates = {};
@@ -140,24 +159,14 @@ async function predictWebcam() {
         if(posture3 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture3;
+          updateStatus();
         }else if((posture3 !== previous && posture3 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture3;
+          updateStatus();
         }
-        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
-      }
- 
-      if(done == goal) {
-        let updates = {};
-        setStatus(status+1);
-        updates[`patients/baoid/packets/${packet_name}/status/done`] = status;
-        update(ref(db), updates);
-      }
-
-      if(done >= goal) {
-        console.log('done');
-        navigate(`/patient/tasks/${packet_name}/`);
       }
 
       canvasCtx.save()
@@ -185,19 +194,19 @@ function Webcam({name}) {
   [status, setStatus] = useState(0);
   posture_name = useParams().webcam_id;
   packet_name = useParams().packet_id;
+  patient_id = useParams().patient_id;
 
   const videoRef = useRef(null);
   useEffect(() => {
-    onValue(ref(db, `patients/baoid/packets/${packet_name}/exercises/${posture_name}`), res => {
+    onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}`), res => {
       const datas = res.val();
       setDone(datas.done);
       setGoal(datas.goal);
     });
-    onValue(ref(db, `patients/baoid/packets/${packet_name}/status`), res => {
+    onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/status`), res => {
       const datas = res.val();
       setStatus(datas.done);
     });
-
     createPoseLandmarker();
     return () => {
       if (videoRef.current && videoRef.current.srcObject) {

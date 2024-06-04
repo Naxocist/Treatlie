@@ -13,8 +13,13 @@
   display: flex;
   justify-content: center;
   background-color: white;
+  margin-top: 10px;
   margin-bottom: 30px;
-  padding: 25px;
+  padding: 10px;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  border-radius: 20px;
+  /* border: 1px solid; */
+  border-color: var(--devy-grey);
 }
 
 /* profile pic  */
@@ -25,6 +30,8 @@
   height: 200px;
   object-fit: fill;
   border-radius: 50%;
+  margin: 10px;
+  margin-top: 20px;
 }
 
 /* text info */
@@ -33,119 +40,24 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.info-wrap>* {
+  margin: 5px;
+}
+
+.info-wrap>*>* {
+  margin: 0;
+}
+
 .below-info-wrap {
   display: flex;
 }
-.birth-date {
+
+.below-info-wrap>:first-child {
   margin-right: 1em;
 }
 
 .desc {
-  width: 40vw;
+  max-width: 50vw;
   margin: 0 auto;
-}
-
-/*======================== Bottom =======================*/
-
-.bot-head {
-  font-size: 2em;
-  text-align: center;
-}
-
-/* list container */
-.bot-list-wrap {
-  width: 50vw;
-  padding: 1em;
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  /* background-color: aqua; */
-}
-
-.btn-reset {
-  all: unset;
-  display: inline-block;
-  box-sizing: border-box;
-}
-
-.list-nm-wrap, .list-rm-wrap {
-  margin: 1em;
-  text-align: center;
-  padding: 1em;
-  /* border-radius: 10px; */
-  background-color: var(--cadet-grey);
-  cursor: pointer;
-
-  font-size: 1.25em;
-  font-weight: bold;
-
-  transition: background-color 0.2s ease;
-}
-.list-nm-wrap:hover {
-  animation: gentle-up-down 0.7s ease;
-}
-.list-rm-wrap:hover {
-  background-color: var(--primary-red);
-}
-
-/* Three buttons */
-.bot-btns-wrap {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 1em 0;
-  padding: 2em;
-  border-radius: 10px;
-  background-color: var(--davy-grey);
-}
-.bot-btns-wrap>div {
-  width: 20%;
-  text-align: center;
-}
-.bot-btns-wrap>div>button {
-  width: 100%;
-  border-radius: 20px;
-  padding: 0.5em;
-  transition: background-color .3s , border-color .5s;
-}
-.filter-toggle button:hover {
-  border-color: var(--primary-green);
-}
-.toggle-remove button:hover {
-  border-color: var(--primary-red);
-}
-
-
-/* ====================== Add popup =================== */
-
-.popup-wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 999;
-  background-color: rgba(0, 0, 0, .5);
-}
-.popup {
-  background-color: var(--primary-grey);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 1em;
-  border-radius: 5px;
-  text-align: center;
-}
-.popup>h1 {
-  font-size: xx-large;
-}
-.popup-btn-wrap {
-  display: flex;
-  justify-content: space-evenly;
-  margin-top: 1em;
-}
-.popup-tf-wrap {
-  margin: 2em 0;
-  display: flex;
-  justify-content: center;
 }

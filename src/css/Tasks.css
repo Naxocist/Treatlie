@@ -1,6 +1,6 @@
 .yes {
   display: flex;
-  background-color: rgb(218, 233, 206);
+  background-color: var(--primary-green);
   border-radius: 11px;
   margin: 20px;
   padding: 10px;
@@ -8,7 +8,8 @@
 }
 
 .yes:hover {
-  background-color: rgb(156, 167, 146);
+  color: black;
+  background-color: #518d7e;
 }
 
 .yes:hover .pic {
@@ -18,7 +19,7 @@
 
 .no {
   display: flex;
-  background-color: rgb(240, 218, 218);
+  background-color: var(--primary-pink);
   border-radius: 11px;
   margin: 20px;
   padding: 10px;
@@ -26,7 +27,8 @@
 }
 
 .no:hover {
-  background-color: rgb(201, 181, 181);
+  color: black;
+  background-color: var(--primary-red);
 }
 
 .no:hover .pic {

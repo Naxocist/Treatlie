@@ -6,9 +6,11 @@ import Profile from "./Patient_Packet_components/Profile.jsx"
 function Patient() {
   return(
     <div className="patient_packets_background">
-      <Header/>
-      <Profile/>
-      <NumPacketDone />
+      {/* <Header/> */}
+      <div className="profile-box">
+        <Profile/>
+        <NumPacketDone />
+      </div>
       <PacketList/>
     </div>
   );

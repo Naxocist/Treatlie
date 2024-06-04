@@ -23,7 +23,7 @@ const router = createBrowserRouter([
     element: <Options />
   },
   {
-    path: 'patient',
+    path: 'patient/:patient_id',
     element: <Patient />
   },
   {
@@ -31,11 +31,11 @@ const router = createBrowserRouter([
     element: <Doctor />
   },
   {
-    path: 'patient/tasks/:packet_id',
+    path: 'patient/:patient_id/tasks/:packet_id',
     element: <Tasks />
   },
   {
-    path: 'patient/tasks/:packet_id/webcam/:webcam_id',
+    path: 'patient/:patient_id/tasks/:packet_id/webcam/:webcam_id',
     element: <Webcam />
   }
 ]);
