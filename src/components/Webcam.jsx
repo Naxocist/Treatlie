@@ -120,7 +120,7 @@ async function predictWebcam() {
           setDone(done+1);
           previous = posture1;
         }
-        updates[`patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
       }else if(posture_name === "right_leg_raise") {
         let updates = {};
@@ -132,7 +132,7 @@ async function predictWebcam() {
           setDone(done+1);
           previous = posture2;
         }
-        updates[`patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
       }else if(posture_name === "left_leg_raise") {
         let updates = {};
@@ -144,14 +144,14 @@ async function predictWebcam() {
           setDone(done+1);
           previous = posture3;
         }
-        updates[`patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+        updates[`patients/baoid/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
       }
  
       if(done == goal) {
         let updates = {};
         setStatus(status+1);
-        updates[`patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/status/done`] = status;
+        updates[`patients/baoid/packets/${packet_name}/status/done`] = status;
         update(ref(db), updates);
       }
 
@@ -188,12 +188,12 @@ function Webcam({name}) {
 
   const videoRef = useRef(null);
   useEffect(() => {
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/exercises/${posture_name}`), res => {
+    onValue(ref(db, `patients/baoid/packets/${packet_name}/exercises/${posture_name}`), res => {
       const datas = res.val();
       setDone(datas.done);
       setGoal(datas.goal);
     });
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet_name}/status`), res => {
+    onValue(ref(db, `patients/baoid/packets/${packet_name}/status`), res => {
       const datas = res.val();
       setStatus(datas.done);
     });

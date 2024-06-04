@@ -6,15 +6,15 @@ import { Link } from 'react-router-dom';
 function PacketList() {
   const [packets, setPackets] = useState({});
   useEffect(() => {
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets`), res => {
-      const datas = res.val()
+    onValue(ref(db, `patients/baoid/packets`), res => {
+      const datas = res.val();
       setPackets(datas);
     });
   }, []);
 
   const success = (key) => {
     let stat;
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${key}/status`), res => {
+    onValue(ref(db, `patients/baoid/packets/${key}/status`), res => {
       const datas = res.val();
       console.log(datas);
       if(datas.done == 0) {
@@ -36,6 +36,7 @@ function PacketList() {
             <div key={index} className={success(key)}>
               <img src={"/muscle.svg"} className="pic"/>
               <span className="packet_name">{value.created}</span>
+              <span className="stat">( {value.status.done} / {value.status.goal} )</span>
             </div>
           </Link>
         )}

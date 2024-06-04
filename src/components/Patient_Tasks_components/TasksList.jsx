@@ -8,7 +8,7 @@ function TasksList() {
   const [tasks, setTasks] = useState({});
   let packet = useParams();
   useEffect(() => {
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet.packet_id}/exercises`), res => {
+    onValue(ref(db, `patients/baoid/packets/${packet.packet_id}/exercises`), res => {
       const datas = res.val()
       setTasks(datas);
     });
@@ -16,7 +16,7 @@ function TasksList() {
 
   const success = (key) => {
     let stat;
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets/${packet.packet_id}/exercises/${key}`), res => {
+    onValue(ref(db, `patients/baoid/packets/${packet.packet_id}/exercises/${key}`), res => {
       const datas = res.val();
       if(datas.done == 0) {
         stat = "each_packet";
@@ -37,6 +37,7 @@ function TasksList() {
             <div key={index} className={success(key)}>
               <img src={"/muscle.svg"} className="pic"/>
               <span className="packet_name">{key}</span>
+              <span className="stat">( {value.done} / {value.goal} )</span>
             </div>
           </Link>
         )}

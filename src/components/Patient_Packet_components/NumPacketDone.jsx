@@ -5,10 +5,9 @@ import { ref, onValue } from "firebase/database"
 function NumPacketDone() {
   const [done, setDone] = useState(0);
   const [goal, setGoal] = useState(0);
-  const [packets, setPackets] = useState({});
 
   useEffect(() => {
-    onValue(ref(db, `patients/BgYwyjb9FUSl7hlICLWDnDOKu9J2/packets`), res => {
+    onValue(ref(db, `patients/baoid/packets`), res => {
       const datas = res.val();
       if(datas) {
         let newGoal = 0;

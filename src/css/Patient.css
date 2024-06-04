@@ -1,13 +1,3 @@
-.patient_packets_background {
-  background-color: rgb(248, 248, 255);
-  /* position: absolute;
-  top: 0; right: 0; bottom: 0; left: 0; */
-}
-
-.body {
-  background-color: rgb(248, 248, 255);
-}
-
 .link {
   color: black;
 }
@@ -16,7 +6,8 @@
   color: black;
   font-family: Arial, sans-serif;
   text-align: center;
-  border: 2px solid;
+  border: 20px solid;
+  border-color: rgb(236, 237, 246);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -26,12 +17,13 @@
   padding: 12px;
   border-radius: 11px;
   font-size: 30px;
-  margin: 0 auto;
+  margin: auto;
   background-color: rgb(255, 255, 255);
+  margin-bottom: 30px;
 }
 
 .done {
-  background-color: #9d9ee3;
+  background-color: var(--primary-green);
   width: 150px;
   height: 150px;
   border-radius: 75px;
@@ -44,7 +36,7 @@
 
 .packet {
   color: black;
-  background-color: rgb(236, 237, 246);
+  background-color: var(--primary-blue);
   font-family: Arial, sans-serif;
   text-align: center;
   align-self: center;
@@ -69,9 +61,11 @@
   display: flex;
 }
 
-.heart {
+.treatlie {
   position: relative; 
   top: 10px;
+  width: 100px;
+  margin: 20px;
 }
 
 .pic {
@@ -89,7 +83,7 @@
 }
 
 .each_packet:hover {
-  background-color: rgb(209, 209, 209);
+  background-color: var(--primary-grey);
 }
 
 .each_packet:hover .pic {
@@ -100,4 +94,10 @@
 .packet_name {
   margin: 25px;
   margin-right: 0px;
+}
+
+.stat {
+  margin: 25px;
+  margin-right: 10px;
+  margin-left: auto;
 }
