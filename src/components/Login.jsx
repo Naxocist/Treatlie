@@ -22,7 +22,6 @@ function Login() {
     await signInWithPopup(auth, provider)
 
     const uid = auth.currentUser.uid;
-    console.log(uid)
 
     get(ref(db, 'info/' + uid)).then( (res) => {
       if (res.exists()) {
@@ -36,7 +35,7 @@ function Login() {
         
 
         if(info.role == 'patient') 
-          navigate('patient')
+          navigate('patient/'+uid)
 
         if(info.role == 'doctor') 
           navigate('doctor')
