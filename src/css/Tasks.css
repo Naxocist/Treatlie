@@ -1,0 +1,37 @@
+.yes {
+  display: flex;
+  background-color: var(--primary-green);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.yes:hover {
+  color: black;
+  background-color: #518d7e;
+}
+
+.yes:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}
+
+.no {
+  display: flex;
+  background-color: var(--primary-pink);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.no:hover {
+  color: black;
+  background-color: var(--primary-red);
+}
+
+.no:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}

@@ -4,4 +4,7 @@
 @import './Doctor.css';
 @import './Profile.css';
 @import './Input.css';
+@import './Patient.css';
 @import './Chat.css';
+@import "./Tasks.css";
+@import "./Webcam.css";

@@ -5,16 +5,14 @@ import { createBrowserRouter, RouterProvider, useParams } from 'react-router-dom
 import { AnimatePresence } from 'framer-motion';
 
 // jsx components
-import { Login, Options, Patient, Doctor, Input, NotFound, Profile, Exercises, DoctorChat, PatientChat} from './components'
+import { Login, Options, Patient, Doctor, Input, NotFound, Profile, Exercises, DoctorChat, PatientChat, Tasks, Webcam} from './components'
 
-// css
-import './css/bundle.css';
-
-
+// import all css
+import './css/bundle.css'
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: '',
     element: <Login />,
     errorElement: <NotFound />
   },
@@ -23,7 +21,7 @@ const router = createBrowserRouter([
     element: <Options />
   },
   {
-    path: 'patient',
+    path: 'patient/:patient_id',
     element: <Patient />
   },
   {
@@ -53,6 +51,14 @@ const router = createBrowserRouter([
   {
     path: '/doctorchat/:currentUserId/:patientUserId',
     element: <DoctorChatWrapper />
+  },
+  {
+    path: 'patient/:patient_id/tasks/:packet_id',
+    element: <Tasks />
+  },
+  {
+    path: 'patient/:patient_id/tasks/:packet_id/webcam/:webcam_id',
+    element: <Webcam />
   }
 ]);
 

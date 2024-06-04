@@ -11,3 +11,7 @@ export { default as Exercises } from './Exercises'
 // Attogafo
 export { default as DoctorChat } from './DoctorChat';
 export { default as PatientChat } from './PatientChat';
+
+// Bharxn
+export { default as Tasks} from './Tasks'
+export { default as Webcam} from './Webcam'

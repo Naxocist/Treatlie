@@ -10,7 +10,7 @@ const firebaseConfig = {
   storageBucket: "treatlie.appspot.com",
   messagingSenderId: "679615773376",
   appId: "1:679615773376:web:15d6fd8386060b24654b25",
-  measurementId: "G-L89WEH5LEV",
+  measurementId: "G-L89WEH5LEV"
 };
 
 const app = initializeApp(firebaseConfig);

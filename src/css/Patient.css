@@ -1,0 +1,125 @@
+.link {
+  color: black;
+}
+
+.text {
+  color: black;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+  /* border: 1px solid; */
+  border-color: var(--devy-grey);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  align-self: center;
+  width: 90%;
+  max-width: 455px;
+  padding: 12px;
+  border-radius: 20px;
+  font-size: 30px;
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+
+.done {
+  background-color: var(--primary-green);
+  width: 150px;
+  height: 150px;
+  border-radius: 75px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.packet {
+  color: black;
+  font-size: 20px;
+  background-color: rgba(236,237,246,255);
+  font-family: Arial, sans-serif;
+  text-align: center;
+  align-self: center;
+  align-items: center;
+  margin-top: 27px;
+  gap: 27px;
+  border-radius: 11px;
+  margin: auto;
+  margin-top: 2%;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-items: center;
+  padding: 10px;
+
+}
+
+.header {
+  font-family: CourierNew, monospace; 
+}
+
+.logo_patient_packets {
+  color: black;
+  display: flex;
+}
+
+.treatlie {
+  position: relative; 
+  top: 10px;
+  width: 100px;
+  margin: 20px;
+}
+
+.pic {
+  width: 50px;
+  transition: transform 0s;
+}
+
+.each_packet {
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  border-radius: 11px;
+  margin: 20px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.each_packet:hover {
+  color: black;
+  background-color: rgb(181, 178, 178);
+}
+
+.each_packet:hover .pic {
+  transition: transform 1s;
+  transform: rotate(360deg);
+}
+
+.packet_name {
+  margin: 25px;
+  margin-right: 0px;
+}
+
+.stat {
+  margin: 25px;
+  margin-right: 10px;
+  margin-left: auto;
+}
+
+.profile-box {
+  padding: 25px;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 100px;
+  box-shadow: rgba(9, 9, 10, 0.2) 0px 7px 29px 0px;
+  background-color: #F7EDE2;
+  /* border-radius: 20px; */
+  /* border: 1px solid var(--primary-grey); */
+}
+
+.packet-title {
+  color: black;
+  text-align: center;
+  margin-top: 50px;
+  
+}

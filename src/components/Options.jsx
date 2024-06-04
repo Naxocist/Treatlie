@@ -1,7 +1,27 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../js/firebase'
 
 function Options() {
+
+  const navigate = useNavigate()
+
+  const [uid, setUid] = useState('')
+
+  useEffect(() => {
+    onAuthStateChanged(auth, user => {
+      if(user) {
+        setUid(user.uid)
+      }else {
+        navigate('/')
+      }
+    })
+  }, [])
+
+  if(!uid) 
+
   return (
     <motion.div 
       className='center-wrap'

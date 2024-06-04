@@ -71,3 +71,63 @@
     width: 100vw;
     height: 100vh;
 }
+
+
+
+/* .profile-wrap {
+  background-color: white;
+  box-shadow: 0px 0px 20px 2px var(--primary-grey);
+  width: fit-content;
+  margin: 2em auto;
+  padding: 2em;
+}
+.tp-wrap {
+  color: black;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 20px;
+  border-color: var(--devy-grey);
+}
+
+.pfp-wrap {
+  margin-right: 3em;
+}
+.pfp-wrap img {
+  height: 200px;
+  object-fit: fill;
+  border-radius: 50%;
+  margin: 10px;
+  margin-top: 20px;
+}
+
+.info-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.info-wrap>* {
+  margin: 5px;
+}
+
+.info-wrap>*>* {
+  margin: 0;
+}
+
+.below-info-wrap {
+  display: flex;
+}
+
+.below-info-wrap>:first-child {
+  margin-right: 1em;
+}
+
+.desc {
+  max-width: 50vw;
+  margin: 0 auto;
+}  */
