@@ -27,9 +27,24 @@ let done;
 let setDone;
 let goal;
 let setGoal;
-let status;
-let setStatus;
+let status=-1;
 let previous=-1;
+
+function updateStatus() {
+  console.log('march gay 2');
+  console.log(done);
+  console.log(goal);
+  if(done === goal) {
+    let updates = {};
+    updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = status+1;
+    update(ref(db), updates);
+  }
+
+  if(done >= goal) {
+    console.log('done');
+    navigate(`/patient/${patient_id}`);
+  }
+}
 
 const createPoseLandmarker = async () => {
   const vision = await FilesetResolver.forVisionTasks(
@@ -56,20 +71,6 @@ let canvasElement = null;
 let canvasCtx = null;
 let video;
 let drawingUtils = null;
-
-function updateStatus() {
-  if(done === goal) {
-    let updates = {};
-    setStatus(status+1);
-    updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = status;
-    update(ref(db), updates);
-  }
-
-  if(done >= goal) {
-    console.log('done');
-    navigate(`/patient/${patient_id}`);
-  }
-}
 
 function enableCam(event) {
   video = document.getElementById("webcam")
@@ -131,11 +132,11 @@ async function predictWebcam() {
         if(posture1 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture1;
-          updateStatus();
+          // updateStatus();
         }else if((posture1 !== previous && posture1 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture1;
-          updateStatus();
+          // updateStatus();
         }
         updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
@@ -145,11 +146,11 @@ async function predictWebcam() {
         if(posture2 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture2;
-          updateStatus();
+          // updateStatus();
         }else if((posture2 !== previous && posture2 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture2;
-          updateStatus();
+          // updateStatus();
         }
         updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
@@ -159,11 +160,11 @@ async function predictWebcam() {
         if(posture3 === 1 && previous === -1) {
           setDone(done+1);
           previous = posture3;
-          updateStatus();
+          // updateStatus();
         }else if((posture3 !== previous && posture3 !== 0) && previous !== -1) {
           setDone(done+1);
           previous = posture3;
-          updateStatus();
+          // updateStatus();
         }
         updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
         update(ref(db), updates);
@@ -189,32 +190,44 @@ async function predictWebcam() {
 
 function Webcam({name}) {
   navigate = useNavigate();
-  [done, setDone] = useState(0);
-  [goal, setGoal] = useState(0);
-  [status, setStatus] = useState(0);
+  [done, setDone] = useState(-1);
+  [goal, setGoal] = useState(-1);
   posture_name = useParams().webcam_id;
   packet_name = useParams().packet_id;
   patient_id = useParams().patient_id;
 
   const videoRef = useRef(null);
   useEffect(() => {
-    onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}`), res => {
-      const datas = res.val();
-      setDone(datas.done);
-      setGoal(datas.goal);
-    });
-    onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/status`), res => {
-      const datas = res.val();
-      setStatus(datas.done);
-    });
-    createPoseLandmarker();
-    return () => {
-      if (videoRef.current && videoRef.current.srcObject) {
-          const tracks = videoRef.current.srcObject.getTracks();
-          tracks.forEach(track => track.stop());
-      }
-    };
-  }, []);
+    if(done == -1 && goal == -1) {
+      onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}`), res => {
+        const datas = res.val();
+        setDone(datas.done);
+        setGoal(datas.goal);
+
+        if(datas.done >= datas.goal) {
+          navigate(`/patient/${patient_id}`);
+        }
+      });
+      onValue(ref(db, `patients/${patient_id}/packets/${packet_name}/status`), res => {
+        const datas = res.val();
+        status = datas.done;
+
+        if(datas.done >= datas.goal) {
+          navigate(`/patient/${patient_id}`);
+        }
+      });
+
+      createPoseLandmarker();
+      return () => {
+        if (videoRef.current && videoRef.current.srcObject) {
+            const tracks = videoRef.current.srcObject.getTracks();
+            tracks.forEach(track => track.stop());
+        }
+      };
+    }else {
+      updateStatus();
+    }
+  }, [done]);
 
   return(
     <div className="patient_packets_background">
