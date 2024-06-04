@@ -42,12 +42,15 @@ export function simplifyDate(dateObj) {
 
 export function convertDeadline(dateISO) {
 
-  const day1 = dayjs()
+  const day1 = dayjs().startOf('day')
   const day2 = dayjs(dateISO)
 
-  const dayDifference = day2.diff(day1, 'day')
-  console.log(day1, day2)
-  console.log(dayDifference)
+
+
+  // const yearDifference = day2.diff(day1, 'year')
+  // const monthDifference = day2.diff(day1, 'month') 
+  const dayDifference = day2.diff(day1, 'day') 
+  // console.log(yearDifference, monthDifference, dayDifference)
 
   if(dayDifference === 0) {
     return "Today"

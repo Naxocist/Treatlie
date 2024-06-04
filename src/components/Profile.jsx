@@ -43,15 +43,15 @@ function Profile() {
           <div className='info-wrap'>
             <h1>{name}</h1>
             <div className='below-info-wrap'>
-              <h3 >Birth of date: {birthdate}</h3>
-              <h3>Age: {age}</h3>
+              <p>Birth of date: {birthdate}</p>
+              <p>Age: {age}</p>
             </div>
             <div className='below-info-wrap'>
-              <h3 >Blood type: {blood}</h3>
-              <h3>Contact: {contact}</h3>
+              <p >Blood type: {blood}</p>
+              <p>Contact: {contact}</p>
             </div>
             <div className='below-info-wrap'>
-              <h3>Address: {address}</h3>
+              <p>Address: {address}</p>
             </div>
           </div>
       </div>

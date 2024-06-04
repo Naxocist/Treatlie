@@ -18,7 +18,7 @@
     margin-right: 3em;
 }
 .pfp-wrap img {
-    height: 200px;
+    height: 150px;
     object-fit: fill;
     border-radius: 50%;
 }
@@ -43,7 +43,7 @@
 }
 
 .desc {
-    max-width: 40vw;
+    max-width: 50vw;
     margin: 0 auto;
 }
 
