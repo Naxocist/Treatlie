@@ -29,6 +29,7 @@ function Input() {
 
   const [doctors, setDoctors] = useState([])
   const [info, setInfo] = useState({})
+  const [revInfo, setRevInfo] = useState({})
   const [selectedDoctor, setSelectedDoctor] = useState('')
 
   const [isLoaded, setIsLoaded] = useState(false)
@@ -40,11 +41,23 @@ function Input() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    onValue(ref(db, 'doctors'), res => {
-      setDoctors(Object.keys(res.val()))
+    onValue(ref(db, 'doctors'), doc => {
 
       onValue(ref(db, 'info'), res => {
-        setInfo(res.val())
+        const data = Object.fromEntries(
+          Object.entries(res.val()).map(([key, val]) => [key, val.name])
+        );
+
+        const revData = Object.fromEntries(
+          Object.entries(data).map(([key, val]) => [val, key])
+        );
+
+        const docs = Object.keys(doc.val()).map(key => data[key]) 
+
+        setInfo(data)
+        setRevInfo(revData)
+        setDoctors(docs)
+
         setIsLoaded(true)
       })
     })
@@ -60,7 +73,7 @@ function Input() {
     // console.log(name, date, blood, address, contact)
     // console.log(symtoms, plan)
 
-    set(ref(db, '/info/' + uid), {
+    set(ref(db, 'info/' + uid), {
       'name': name,
       'birth-date': dayjs(date).toISOString(),
       'blood': blood,
@@ -73,8 +86,8 @@ function Input() {
       navigate('/patient')
     })
 
-    set(ref(db, '/patients/' + uid), {
-      'paired-doctor-uid': selectedDoctor
+    set(ref(db, 'patients/' + uid), {
+      'paired-doctor-uid': revInfo[selectedDoctor]
     })
   }
 
@@ -101,7 +114,7 @@ function Input() {
             <div className='line'>
               <div>
                 <TextField
-                  id="standard-basic"
+                  id="standard-basic2"
                   label="Full Name"
                   variant="outlined"
                   onChange={(e) => setName(e.target.value)}
@@ -121,7 +134,7 @@ function Input() {
               <div>
                 <Autocomplete
                   disablePortal
-                  id='combo-box-demo'
+                  id='combo-box-demo2'
                   options={bloodType}
                   onChange={(e, val) => setBlood(val)}
                   renderInput={(params) =>

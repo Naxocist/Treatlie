@@ -67,9 +67,7 @@ function DoctorChatWrapper() {
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <AnimatePresence>
-      <RouterProvider router={router} />
-    </AnimatePresence>
-  </React.StrictMode>
+  <AnimatePresence>
+    <RouterProvider router={router} />
+  </AnimatePresence>
 );
