@@ -13,8 +13,6 @@ const firebaseConfig = {
   measurementId: "G-L89WEH5LEV",
 };
 
-console.log(process.env.FIREBASE_GOOGLE_API_KEY)
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
