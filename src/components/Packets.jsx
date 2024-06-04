@@ -8,6 +8,8 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
 
   const [filter, setFilter] = useState(false)
 
+
+
   const handleAddPacket = () =>{
     const dateIso = (new Date).toISOString()
 
@@ -55,13 +57,19 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
       <div className='bot-list-wrap'>
         { packets ?
             Object.entries(packets).map(([key, packet]) => (
-              <Packet
-                key={key}
-                hash={key}
-                packet={packet}
-                uid={uid}
-                removeMode={removeMode}
-              />
+              <>
+                {!filter || (filter && packet['status']['done'] >= packet['status']['goal']  ) ?
+                  <Packet
+                    key={key}
+                    hash={key}
+                    packet={packet}
+                    uid={uid}
+                    removeMode={removeMode}
+                  />
+                  :
+                  <></>
+                }
+              </>
             ))
             :
             <h2>There are no packets</h2>

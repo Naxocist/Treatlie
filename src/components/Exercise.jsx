@@ -1,8 +1,7 @@
 
-import { remove, ref } from 'firebase/database'
+import { remove, ref, update, increment } from 'firebase/database'
 import { db } from '../js/firebase'
 
-import { motion } from 'framer-motion'
 function Exercise({uid, hash, exName, status, removeMode}) {
 
   const handleRemovePacket = () => {
@@ -11,6 +10,13 @@ function Exercise({uid, hash, exName, status, removeMode}) {
       if(confirmed) {
         // remove an exercise
         remove(ref(db, `patients/${uid}/packets/${hash}/exercises/${exName}`))
+        const updates = {}
+        updates[`patients/${uid}/packets/${hash}/status/goal`] = increment(-1)
+
+        if(status.done >= status.goal) {
+          updates[`patients/${uid}/packets/${hash}/status/done`] = increment(-1)
+        }
+        update(ref(db), updates);
       }
   }
 

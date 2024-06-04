@@ -20,8 +20,6 @@ function Options() {
     })
   }, [])
 
-  if(!uid) 
-
   return (
     <motion.div 
       className='center-wrap'
@@ -35,7 +33,7 @@ function Options() {
       <div className='options-card'>
         <div>
           <button className='btn'>
-            <Link to='../patient' >patient</Link>
+            <Link to={'../patient/' + uid} >patient</Link>
           </button>
         </div>
 

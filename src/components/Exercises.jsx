@@ -11,6 +11,7 @@ import DatePopup from "./DatePopUp"
 function Exercises({uid, packets, removeMode, setRemoveMode}) {
 
   const [datePopUp, setDatePopUp] = useState(false)
+  const [filter, setFilter] = useState(false)
 
   const params = useParams()
   const [popUp, setPopUp] = useState(false)
@@ -39,7 +40,7 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
 
       <div className='bot-btns-wrap'>
         <div className='filter-toggle'>
-          <button className='btn'>filter DONE</button>
+          <button className='btn' onClick={() => setFilter(!filter)}>filter DONE</button>
         </div>
         <div className='add-packets'>
           <button className='btn' onClick={() => setPopUp(true)}>add an exercise</button>
@@ -57,18 +58,24 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
       </div>
 
       <div className='bot-list-wrap'>
-        { exercises ?
-            Object.entries(exercises).map(([exName, status]) => (
-              <Exercise
-                key={exName}
-                uid={uid}
-                hash={hash}
-                exName={exName}
-                status={status}
-                removeMode={removeMode}
-              />
-            ))
-            :
+        {exercises ?
+          Object.entries(exercises).map(([exName, status]) => (
+            <>
+              {!filter || (filter && packet['status']['done'] >= packet['status']['goal']) ?
+                <Exercise
+                  key={exName}
+                  uid={uid}
+                  hash={hash}
+                  exName={exName}
+                  status={status}
+                  removeMode={removeMode}
+                />
+                :
+                <></>
+              }
+            </>
+          ))
+          :
             <h2>There are no exercises</h2>
         }
       </div>

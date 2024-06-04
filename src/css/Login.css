@@ -17,11 +17,11 @@
 .logo:hover {
   filter: drop-shadow(0 0 1px var(--logo-color-1));
 }
-.text {
+.logo-text {
   height: 8em;
   transition: filter 500ms;
 }
-.text:hover {
+.logo-text:hover {
   filter: drop-shadow(0 0 5px var(--logo-color-2));
 }
 

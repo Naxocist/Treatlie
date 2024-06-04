@@ -63,7 +63,7 @@ function Login() {
       </a>
 
       <a>
-        <img src={TreatlieTxt} className='text' alt='Treatlie text' />
+        <img src={TreatlieTxt} className='logo-text' alt='Treatlie text' />
       </a>
 
       <div className='card'>

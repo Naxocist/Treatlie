@@ -1,12 +1,12 @@
 import { Autocomplete, Button, TextField } from '@mui/material'
 
 import { db } from '../js/firebase'
-import { ref, set } from 'firebase/database'
+import { increment, ref, set, update } from 'firebase/database'
 
 import { useState } from 'react'
 
 
-const exList = ['nod', 'right leg raise', 'left leg raise']
+const exList = ['right_leg_raise', 'left_leg_raise', 'arms_raise']
 
 
 function Popup({uid, hash, setPopUp}) {
@@ -28,10 +28,14 @@ function Popup({uid, hash, setPopUp}) {
 
     set(ref(db, `patients/${uid}/packets/${hash}/exercises/${selectedEx}`), {
       "done": 0,
-      "goal": goal,
+      "goal": parseInt(goal),
     }).then(() => {
       setPopUp(false)
     })
+
+    const updates = {}
+    updates[`patients/${uid}/packets/${hash}/status/goal`] = increment(1)
+    update(ref(db), updates);
   }
 
   return (

@@ -31,9 +31,6 @@ let status=-1;
 let previous=-1;
 
 function updateStatus() {
-  console.log('march gay 2');
-  console.log(done);
-  console.log(goal);
   if(done === goal) {
     let updates = {};
     updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = status+1;
@@ -204,7 +201,7 @@ function Webcam({name}) {
         setDone(datas.done);
         setGoal(datas.goal);
 
-        if(datas.done >= datas.goal) {
+        if(datas.done && datas.done >= datas.goal) {
           navigate(`/patient/${patient_id}`);
         }
       });
@@ -212,7 +209,7 @@ function Webcam({name}) {
         const datas = res.val();
         status = datas.done;
 
-        if(datas.done >= datas.goal) {
+        if(datas.done && datas.done >= datas.goal) {
           navigate(`/patient/${patient_id}`);
         }
       });

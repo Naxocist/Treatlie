@@ -1,10 +1,39 @@
+import { useEffect, useState } from "react";
 import unknown from "./../../../public/unknown.jpg"
-import { db } from "./../../js/firebase.js"
-import { ref, onValue } from "firebase/database"
-import { useEffect } from "react";
+import { onValue, ref } from "firebase/database";
+
+import { auth, db } from '../../js/firebase'
+import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+
 
 function Profile() {
+
+  const [uid, setUid] = useState('')
+  const [partner, setPartner] = useState('')
+  const navigate = useNavigate()
+
+
+  useEffect(() => {
+
+    onAuthStateChanged(auth, user => {
+      if(user) {
+        setUid(user.uid)
+
+        // onValue(ref(db, `patients/${user.uid}/paired-doctor-uid`), res => {
+        //   setPartner(res.val())
+        // })
+      }else {
+        navigate('/')
+      }
+    }
+    )
+  }, [])
   
+  const handleChat = () => {
+    navigate(`/patientchat/${uid}`);
+  };
+
   return(
     <div className='tp-wrap'>
       <div className='pfp-wrap'>
@@ -12,7 +41,14 @@ function Profile() {
       </div>
 
       <div className='info-wrap'>
-        <h1>Patient A</h1>
+        <div className='below-info-wrap'>
+          <h1>Patient A</h1>
+          <div className='chat-button'>
+            <button onClick={handleChat}>
+              Chat
+            </button>
+          </div>
+        </div>
         <div className='below-info-wrap'>
           <p>Birth of date: 5/6/2017</p>
           <p>Age: 7</p>
@@ -26,7 +62,7 @@ function Profile() {
         </div>
       </div>
     </div>
-  );
+  ) 
 }
 
 export default Profile;

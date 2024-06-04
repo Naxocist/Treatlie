@@ -24,7 +24,7 @@ export function Posture2(coor) {
   console.log(angle25);
   console.log("------");
 
-  if(angle25 <= 90) {
+  if(angle25 <= 45) {
     return 1;
   }else if(angle25 >= 160) {
     return 2;
