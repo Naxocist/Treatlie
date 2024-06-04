@@ -73,7 +73,7 @@ function Input() {
       navigate('/patient')
     })
 
-    set(ref(db, '/patient/' + uid), {
+    set(ref(db, '/patients/' + uid), {
       'paired-doctor-uid': selectedDoctor
     })
   }
