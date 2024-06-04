@@ -22,11 +22,6 @@ function Doctor() {
   const outletLoaded = useOutlet();
 
 
-  const handleChat = () => {
-    const currentUserId = auth.currentUser.uid;
-    navigate(`/doctorchat/${currentUserId}`);
-  };
-
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
@@ -96,11 +91,6 @@ function Doctor() {
                 </div>
             }
           </section>
-
-
-          <div>
-            <button className="chat-button" onClick={() => handleChat()}>Chat with Patient</button>
-          </div>
         </div> 
         :
         // not loaded yet

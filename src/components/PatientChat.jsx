@@ -64,7 +64,7 @@ const PatientChat = ({ currentUserId }) => {
 
   return (
     <div className="chat-container">
-      <Link to='../patient' className='back-button'>Patient</Link>
+      <Link to='../patient' className='back-button'>Back</Link>
       <h1 className="chat-title">Chat with {chatPartnerName}</h1>
       <ul className="message-list">
         {messages.map((message) => (

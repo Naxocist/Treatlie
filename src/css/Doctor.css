@@ -5,7 +5,7 @@
 
 .place-holder {
     width: 20vw;
-    background-color: red;
+    background-color: var(--darkblue);
 }
 
 

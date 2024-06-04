@@ -51,7 +51,7 @@ const router = createBrowserRouter([
     element: <PatientChatWrapper />
   },
   {
-    path: '/doctorchat/:currentUserId',
+    path: '/doctorchat/:currentUserId/:patientUserId',
     element: <DoctorChatWrapper />
   }
 ]);
@@ -62,8 +62,8 @@ function PatientChatWrapper() {
 }
 
 function DoctorChatWrapper() {
-  const { currentUserId } = useParams();
-  return <DoctorChat currentUserId={currentUserId} />;
+  const { currentUserId, patientUserId } = useParams();
+  return <DoctorChat currentUserId={currentUserId} patientUserId={patientUserId} />;
 }
 
 ReactDOM.createRoot(document.getElementById("root")).render(

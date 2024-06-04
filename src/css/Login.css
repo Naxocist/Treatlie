@@ -9,7 +9,7 @@
 
 
 .logo {
-  height: 15em;
+  height: 12em;
   will-change: filter;
   transition: filter 300ms;
   /* animation: logo-spin 10s infinite */
@@ -18,7 +18,7 @@
   filter: drop-shadow(0 0 1px var(--logo-color-1));
 }
 .text {
-  height: 10em;
+  height: 8em;
   transition: filter 500ms;
 }
 .text:hover {

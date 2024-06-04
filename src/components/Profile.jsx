@@ -1,14 +1,16 @@
 import { useState } from 'react';
 
-import { useOutlet, useOutletContext, useParams } from 'react-router-dom'
+import { useNavigate, useOutlet, useOutletContext, useParams } from 'react-router-dom'
 
 import unknown from '../assets/unknown.jpg'
 import { calculateAge } from '../js/utils'
 
 import Exercises from './Exercises';
 import Packets from './Packets';
+import DoctorChat from './DoctorChat';
 
 import { simplifyDate } from '../js/utils';
+import { auth } from '../js/firebase';
 
 
 function Profile() {
@@ -17,6 +19,8 @@ function Profile() {
 
   const params = useParams()
   const { patientsInfo, usersInfo } = useOutletContext()
+
+  const navigate = useNavigate()
 
   const uid = params.uid
   const info = usersInfo[uid]
@@ -32,6 +36,11 @@ function Profile() {
   const packets = patientsInfo[uid]['packets']
 
   const age = calculateAge(birthdate)
+
+  const handleChat = () => {
+    const currentUserId = auth.currentUser.uid;
+    navigate(`/doctorchat/${currentUserId}/${uid}`);
+  };
 
   return (
     <div className='profile-wrap'>
@@ -52,6 +61,11 @@ function Profile() {
             </div>
             <div className='below-info-wrap'>
               <p>Address: {address}</p>
+            </div>
+            <div className='below-info-wrap'>
+            <div>
+              <button className="chat-button" onClick={handleChat}>Chat with {name}</button>
+            </div>
             </div>
           </div>
       </div>

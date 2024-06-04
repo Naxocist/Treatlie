@@ -8,13 +8,8 @@
   --scrollbar-thumb-color: #7ab9e1;
 }
 
-body, html {
-  height: 100%;
-  margin: 0;
-  justify-content: center;
-  align-items: center;
-  font-family: Arial, sans-serif;
-  overflow: hidden;
+.chat-button:hover {
+  cursor: pointer;
 }
 
 .chat-container {
@@ -25,7 +20,7 @@ body, html {
   box-shadow: 0 4px 15px var(--shadow-color);
   display: flex;
   flex-direction: column;
-  height: 550px;
+  height: 80vh;
 }
 
 .chat-header {
@@ -48,6 +43,7 @@ body, html {
   font-weight: bold;
   color: var(--primary-color);
   text-shadow: 1px 1px 2px var(--shadow-color);
+  text-align: center;
 }
 
 .message-container {

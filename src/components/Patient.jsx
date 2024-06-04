@@ -13,7 +13,7 @@ const Patient = () => {
 
   return (
     <div>
-      <button className="chat-button" onClick={() => handleChat()}>Chat with Doctors</button>
+      <button className="chat-button" onClick={handleChat}>Chat with Doctors</button>
     </div>
   );
 };

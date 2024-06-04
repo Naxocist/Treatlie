@@ -2,9 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Itim&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
 
-* {
-  font-family: 'Open Sans'
-}
+
 :root {
   font-family: 'Open Sans', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -34,9 +32,13 @@
   --ghost-white: #F4F4F9;
 }
 
+* {
+  font-family: 'Open Sans';
+}
 
 body {
   margin: 0;
+  padding: 0;
 }
 
 
