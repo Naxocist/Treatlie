@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from '../js/firebase'
@@ -7,16 +7,21 @@ import { auth } from '../js/firebase'
 
 function Options() {
 
+  const navigate = useNavigate()
+
+  const [uid, setUid] = useState('')
+
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if(user) {
-        console.log(user.uid)
+        setUid(user.uid)
       }else {
-        location.assign('/')
-        console.log("Error!")
+        navigate('/')
       }
     })
   }, [])
+
+  if(!uid) 
 
   return (
     <>
@@ -25,7 +30,7 @@ function Options() {
       <div className='options-card'>
         <div>
           <button>
-            <Link to='../patient' >patient</Link>
+            <Link to={`../patient/${uid}`} >patient</Link>
           </button>
         </div>
 
