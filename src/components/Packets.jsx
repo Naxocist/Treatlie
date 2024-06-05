@@ -35,7 +35,13 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
 
       <div className='bot-btns-wrap'>
         <div className='filter-toggle'>
-          <button className='btn' onClick={() => setFilter(!filter)}>filter DONE</button>
+          <button 
+            className='btn' 
+            onClick={() => setFilter(!filter)}
+            style={{
+              "backgroundColor": filter ? "var(--primary-green)" : "",
+            }}
+            >filter DONE</button>
         </div>
         <div className='add-packet'>
           <button className='btn' onClick={handleAddPacket}>add a packet</button>
@@ -58,13 +64,14 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
         { packets ?
             Object.entries(packets).map(([key, packet]) => (
               <>
-                {!filter || (filter && packet['status']['done'] >= packet['status']['goal']  ) ?
+                {!filter || packet['status']['done'] === 0 || (filter && packet['status']['done'] < packet['status']['goal']  ) ?
                   <Packet
                     key={key}
                     hash={key}
                     packet={packet}
                     uid={uid}
                     removeMode={removeMode}
+                    finished={packet['status']['done'] &&packet['status']['done'] >= packet['status']['goal']}
                   />
                   :
                   <></>

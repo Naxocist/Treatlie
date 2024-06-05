@@ -102,7 +102,7 @@
     padding: 20px 40px;
 
     border-radius: 10px;
-    background-color: #FFFDB5;
+    background-color: #fefca8;
     cursor: pointer;
 
     font-size: 1.25em;
@@ -112,7 +112,14 @@
 }
 
 .list-nm-wrap:hover {
+    background-color: #f8f798;
     animation: gentle-up-down 0.7s ease;
+}
+.list-hover {
+    background-color: var(--primary-green);
+}
+.list-hover:hover {
+    background-color: var(--secondary-green);
 }
 .list-rm-wrap:hover {
     background-color: var(--secondary-red);

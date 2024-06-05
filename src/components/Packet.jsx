@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 
 import { motion } from 'framer-motion'
 
-function Packet({hash, packet, uid, removeMode}) {
+function Packet({hash, packet, uid, removeMode, finished}) {
 
     const handleRemovePacket = () => {
         const confirmed = window.confirm(`You are deleting a packet. This process can't be undone. \nAre you sure?`)
@@ -24,7 +24,9 @@ function Packet({hash, packet, uid, removeMode}) {
       <>
         {removeMode ?
           <div onClick={handleRemovePacket} className='outer-wrap'>
-            <div className='list-rm-wrap'>
+            <div 
+              className={`list-rm-wrap ${finished ? 'list-hover' : ''}`}
+            >
               <p> Assigned on </p> 
               <p>{created} </p>
               <p>Due <u>{deadline}</u></p>
@@ -32,7 +34,9 @@ function Packet({hash, packet, uid, removeMode}) {
           </div>
           :
           <NavLink to={'packet/' + hash} className='outer-wrap'>
-            <div className='list-nm-wrap'>
+            <div 
+              className={`list-nm-wrap ${finished ? 'list-hover' : ''}`}
+            >
               <p>Assigned on</p>
               <p>{created}</p>
 

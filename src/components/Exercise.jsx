@@ -2,7 +2,7 @@
 import { remove, ref, update, increment } from 'firebase/database'
 import { db } from '../js/firebase'
 
-function Exercise({uid, hash, exName, status, removeMode}) {
+function Exercise({uid, hash, exName, status, removeMode, finished}) {
 
   const handleRemovePacket = () => {
       const confirmed = window.confirm(`You are deleting a packet. This process can't be undone. \nAre you sure?`)
@@ -28,14 +28,14 @@ function Exercise({uid, hash, exName, status, removeMode}) {
     <div>
       {removeMode ?
         <div onClick={handleRemovePacket} className='outer-wrap'>
-          <div className='list-rm-wrap'>
+          <div className={`list-rm-wrap ${finished ? 'list-hover' : ''}`} >
             <p>{exName}</p>
             <p>{done} / {goal}</p>
           </div>
         </div>
         :
         <div className='outer-wrap'>
-          <div className='list-nm-wrap'>
+          <div className={`list-nm-wrap ${finished ? 'list-hover' : ''}`} >
             <p>{exName}</p>
             <p>{done} / {goal}</p>
           </div>

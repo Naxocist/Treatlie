@@ -40,7 +40,11 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
 
       <div className='bot-btns-wrap'>
         <div className='filter-toggle'>
-          <button className='btn' onClick={() => setFilter(!filter)}>filter DONE</button>
+          <button className='btn' onClick={() => setFilter(!filter)}
+            style={{
+              "backgroundColor": filter ? "var(--primary-green)" : "",
+            }}
+          >filter DONE</button>
         </div>
         <div className='add-packets'>
           <button className='btn' onClick={() => setPopUp(true)}>add an exercise</button>
@@ -61,7 +65,7 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
         {exercises ?
           Object.entries(exercises).map(([exName, status]) => (
             <>
-              {!filter || (filter && packet['status']['done'] >= packet['status']['goal']) ?
+              {!filter || status['done'] === 0 || (filter && status['done'] < status['goal']  ) ?
                 <Exercise
                   key={exName}
                   uid={uid}
@@ -69,6 +73,7 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
                   exName={exName}
                   status={status}
                   removeMode={removeMode}
+                  finished={status['done'] && status['done'] >= status['goal']}
                 />
                 :
                 <></>
