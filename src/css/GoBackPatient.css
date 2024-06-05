@@ -1,0 +1,15 @@
+.go_back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #eccefa;
+  padding: 15px;
+  cursor: pointer;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.go_back:hover {
+  color: black;
+  background-color: #e5bbf9;
+}
