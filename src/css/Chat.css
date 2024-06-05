@@ -30,6 +30,7 @@
 }
 .chat-button:hover {
   background-color: #e5bbf9;
+  animation: gentle-up-down 0.7s ease;
 }
 
 .chat-container {

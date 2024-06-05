@@ -44,19 +44,19 @@ function Exercises({uid, packets, removeMode, setRemoveMode}) {
             style={{
               "backgroundColor": filter ? "var(--primary-green)" : "",
             }}
-          >filter DONE</button>
+          >Filter DONE</button>
         </div>
         <div className='add-packets'>
-          <button className='btn' onClick={() => setPopUp(true)}>add an exercise</button>
+          <button className='btn' onClick={() => setPopUp(true)}>Add an exercise</button>
         </div>
         <div className='toggle-remove' >
           <button
             className='btn'
-            style={{ "backgroundColor": removeMode ? "#F9564F" : "" }}
+            style={{ "backgroundColor": removeMode ? "var(--primary-red)" : "" }}
             onClick={() => {
               setRemoveMode(!removeMode)
             }}>
-            remove mode
+            Remove mode
           </button>
         </div>
       </div>

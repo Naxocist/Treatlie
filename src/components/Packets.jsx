@@ -41,10 +41,10 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
             style={{
               "backgroundColor": filter ? "var(--primary-green)" : "",
             }}
-            >filter DONE</button>
+            >Filter DONE</button>
         </div>
         <div className='add-packet'>
-          <button className='btn' onClick={handleAddPacket}>add a packet</button>
+          <button className='btn' onClick={handleAddPacket}>Add a packet</button>
         </div>
         <div className='toggle-remove' >
           <button
@@ -55,7 +55,7 @@ function Packets({uid, packets, removeMode, setRemoveMode}) {
             onClick={() => {
               setRemoveMode(!removeMode)
             }}>
-            remove mode
+            Remove mode
           </button>
         </div>
       </div>

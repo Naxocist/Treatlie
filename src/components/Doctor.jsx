@@ -75,6 +75,7 @@ function Doctor() {
           <section className='place-holder'></section>
 
           <section className='sidebar-wrap'>
+            <h1>Patient list</h1>
             {
               Object.keys(patientsUid).map(uid => (
                 <PatientCard key={uid} name={usersInfo[uid]['name']} uid={uid} />

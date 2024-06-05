@@ -25,6 +25,11 @@
     position: fixed;
     padding-top: 1em;
     overflow: auto;
+    text-align: center;
+}
+.sidebar-wrap>h1 {
+  color: white;
+  margin: 0;
 }
 
 .p-card {
