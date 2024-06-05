@@ -4,6 +4,8 @@ import { ref, onValue } from "firebase/database"
 import { Link, useParams } from 'react-router-dom'
 import { ISOtoString, convertDeadline } from "./../../js/utils.js"
 
+import NumPacketDone from "../Patient_Packet_components/NumPacketDone.jsx"
+
 function PacketList() {
   const [packets, setPackets] = useState({});
   const patient_id = useParams().patient_id;
@@ -40,8 +42,12 @@ function PacketList() {
 
   return(
     <div>
-      <h1 className="packet-title">Exercise Packets</h1>
+      <div className='patient-tp-wrap'>
+        <h1 className="packet-title">Exercise Packets</h1>
+        {/* <p className="">slfkesjl</p> */}
+      </div>
       <hr/>
+      <NumPacketDone />
       <div className="packet">
         <div className="packet_list">
 

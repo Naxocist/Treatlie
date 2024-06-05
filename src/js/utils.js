@@ -61,5 +61,13 @@ export function convertDeadline(dateISO) {
     return "Tomorrow"
   }
 
+  if(dayDifference == -1) {
+    return "Yesterday"
+  }
+
+  if(dayDifference < 0) {
+    return `${-dayDifference} days ago`
+  }
+
   return `in ${dayDifference} days`
 }

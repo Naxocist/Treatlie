@@ -9,7 +9,6 @@ function Patient() {
       {/* <Header/> */}
       <div className="profile-box">
         <Profile/>
-        <NumPacketDone />
       </div>
       <PacketList/>
     </div>
