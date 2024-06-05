@@ -15,8 +15,8 @@ export function calculateAge(birthdayString) {
   
   const monthDifference = today.getMonth() - birthday.getMonth()
   const dayDifference = today.getDate() - birthday.getDate()
-  // console.log(monthDifference, dayDifference)
   
+  console.log("DIFF", today.getMonth(), birthday.getMonth())
   if (monthDifference < 0 || (monthDifference === 0 && dayDifference < 0)) {
     age--
   }
@@ -36,6 +36,7 @@ export function ISOtoString(dateIso) {
 
 export function simplifyDate(dateObj) {
   const dt = dayjs(dateObj)
+  console.log(dt)
 
   return dt.format('d/M/YYYY')
 }
