@@ -25,8 +25,8 @@ function Doctor() {
   useEffect(() => {
     onAuthStateChanged(auth, user => {
       if (user) {
-
-        onValue(ref(db, `doctors/${auth.currentUser.uid}/patient-list`), res => {
+        // console.log(user.uid)
+        onValue(ref(db, `doctors/${user.uid}/patient-list`), res => {
           const data = res.val()
           setPatientsUid(data)
 

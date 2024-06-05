@@ -9,9 +9,11 @@ function TasksList() {
   let packet = useParams();
   const patient_id = useParams().patient_id;
   useEffect(() => {
-    onValue(ref(db, `patients/${patient_id}/packets/${packet.packet_id}/exercises`), res => {
-      const datas = res.val()
-      setTasks(datas);
+    onValue(ref(db, `patients/${patient_id}/packets/${packet.packet_id}/`), res => {
+      const datas = res.val().exercises;
+      if(datas) {
+        setTasks(datas);
+      }
     });
   }, []);
 

@@ -83,7 +83,7 @@ function Input() {
       'plan': plan,
       'role': 'patient'
     }).then(() => {
-      navigate('/patient')
+      navigate('/patient' + uid)
     })
 
     set(ref(db, 'patients/' + uid), {
