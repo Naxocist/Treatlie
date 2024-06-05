@@ -9,7 +9,7 @@ import { Posture2 } from "./Webcam_components/Posture2.jsx"
 import { Posture3 } from "./Webcam_components/Posture3.jsx"
 import { useParams, useNavigate } from 'react-router-dom'
 import { db } from "./../js/firebase.js"
-import { ref, onValue, update } from "firebase/database"
+import { ref, onValue, update, increment } from "firebase/database"
 import GoBackPatient from "./Patient_Packet_components/GoBackPatient.jsx"
 
 let demosSection;
@@ -30,27 +30,15 @@ let goal;
 let setGoal;
 let status=-1;
 let previous=-1;
+let posture;
 
-function stopWebcam() {
-  if (video && video.srcObject) {
-    const tracks = video.srcObject.getTracks();
-    tracks.forEach(track => track.stop());
-  }
-  webcamRunning = false;
-}
-
-function updateStatus() {
-  if(done === goal) {
-    let updates = {};
-    updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = status+1;
-    update(ref(db), updates);
-  }
-
-  if(done >= goal) {
-    console.log('done');
-    navigate(`/patient/${patient_id}`);
-  }
-}
+// function stopWebcam() {
+//   if (video && video.srcObject) {
+//     const tracks = video.srcObject.getTracks();
+//     tracks.forEach(track => track.stop());
+//   }
+//   webcamRunning = false;
+// }
 
 const createPoseLandmarker = async () => {
   const vision = await FilesetResolver.forVisionTasks(
@@ -133,47 +121,27 @@ async function predictWebcam() {
     poseLandmarker.detectForVideo(video, startTimeMs, result => {
       // posture options
       if(posture_name === "arms_raise") {
-        let updates = {};
-        let posture1 = Posture1(result.landmarks);
-        if(posture1 === 1 && previous === -1) {
+        
+        posture = Posture1(result.landmarks);
+        if(posture === 1 && previous === -1) {
           setDone(done+1);
-          previous = posture1;
-          // updateStatus();
-        }else if((posture1 !== previous && posture1 !== 0) && previous !== -1) {
+        }else if((posture !== previous && posture !== 0) && previous !== -1) {
           setDone(done+1);
-          previous = posture1;
-          // updateStatus();
         }
-        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
-        update(ref(db), updates);
       }else if(posture_name === "right_leg_raise") {
-        let updates = {};
-        let posture2 = Posture2(result.landmarks);
-        if(posture2 === 1 && previous === -1) {
+        posture = Posture2(result.landmarks);
+        if(posture === 1 && previous === -1) {
           setDone(done+1);
-          previous = posture2;
-          // updateStatus();
-        }else if((posture2 !== previous && posture2 !== 0) && previous !== -1) {
+        }else if((posture !== previous && posture !== 0) && previous !== -1) {
           setDone(done+1);
-          previous = posture2;
-          // updateStatus();
         }
-        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
-        update(ref(db), updates);
       }else if(posture_name === "left_leg_raise") {
-        let updates = {};
-        let posture3 = Posture3(result.landmarks);
-        if(posture3 === 1 && previous === -1) {
+        posture = Posture3(result.landmarks);
+        if(posture === 1 && previous === -1) {
           setDone(done+1);
-          previous = posture3;
-          // updateStatus();
-        }else if((posture3 !== previous && posture3 !== 0) && previous !== -1) {
+        }else if((posture !== previous && posture !== 0) && previous !== -1) {
           setDone(done+1);
-          previous = posture3;
-          // updateStatus();
         }
-        updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
-        update(ref(db), updates);
       }
 
       canvasCtx.save()
@@ -196,11 +164,11 @@ async function predictWebcam() {
 
 function Webcam({name}) {
   navigate = useNavigate();
-  [done, setDone] = useState(-1);
   [goal, setGoal] = useState(-1);
   posture_name = useParams().webcam_id;
   packet_name = useParams().packet_id;
   patient_id = useParams().patient_id;
+  [done, setDone] = useState(-1);
 
   const videoRef = useRef(null);
   useEffect(() => {
@@ -231,12 +199,23 @@ function Webcam({name}) {
         }
       };
     }else {
-      updateStatus();
+      if(done === goal) {
+        let updates = {};
+        updates[`patients/${patient_id}/packets/${packet_name}/status/done`] = increment(1);
+        update(ref(db), updates);
+        console.log('done');
+        navigate(`/patient/${patient_id}`);
+      }
+      
+      previous = posture;
+      let updates = {};
+      updates[`patients/${patient_id}/packets/${packet_name}/exercises/${posture_name}/done`] = done;
+      update(ref(db), updates);
     }
 
-    return () => {
-      stopWebcam();
-    }
+    // return () => {
+    //   stopWebcam();
+    // }
   }, [done]);
 
   return(
@@ -244,12 +223,19 @@ function Webcam({name}) {
       <GoBackPatient who="patient"/>
       <section id="demos" className="invisible">
         <div id="liveView" className="videoView">
+        <div className="bruh">
+          <h1> count : {done}/{goal} </h1>
+        </div>
+
+
           <div className="media" style={{ position: 'relative'}} onClick={enableCam}>
-            <h1> count : {done}/{goal} </h1>
             <div className="clicktostart" style={{ width: "1280px", height: "720px", position: "absolute" }}>
               <h1>Click here to start</h1>
             </div>
-            <video id="webcam" style={{ width: "1280px", height: "720px", position: "absolute" }} ref={videoRef} autoPlay playsInline/>
+            <div  className='video-wrap'>
+              <video id="webcam" style={{ width: "1280px", height: "720px", position: "absolute" }} ref={videoRef} autoPlay playsInline/>
+            </div>
+
             <canvas className="output_canvas" width="1280" height="720" style={{position: "absolute", left: "0px", top: "0px"}} id="output_canvas" />
           </div>
         </div>

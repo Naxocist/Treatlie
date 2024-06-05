@@ -15,12 +15,12 @@ export function Posture1(coor) {
     pos13 = coor[0][13];
     pos11 = coor[0][11];
   } catch(error) {
-    return false;
+    return 0;
   }
 
   if(pos16 === undefined || pos14 === undefined || pos12 === undefined || 
     pos15 === undefined || pos13 === undefined || pos11 === undefined) {
-      return false;
+      return 0;
     }
 
   const angle14 = Angle(Dis(pos14, pos16), Dis(pos14, pos12), Dis(pos12, pos16)) * 180 / Math.PI;
