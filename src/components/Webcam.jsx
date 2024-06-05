@@ -7,6 +7,8 @@ import {
 import { Posture1 } from "./Webcam_components/Posture1.jsx"
 import { Posture2 } from "./Webcam_components/Posture2.jsx"
 import { Posture3 } from "./Webcam_components/Posture3.jsx"
+import { Posture4 } from "./Webcam_components/Posture4.jsx"
+// import { Posture5 } from "./Webcam_components/Posture5.jsx"
 import { useParams, useNavigate } from 'react-router-dom'
 import { db } from "./../js/firebase.js"
 import { ref, onValue, update, increment } from "firebase/database"
@@ -137,6 +139,13 @@ async function predictWebcam() {
         }
       }else if(posture_name === "left_leg_raise") {
         posture = Posture3(result.landmarks);
+        if(posture === 1 && previous === -1) {
+          setDone(done+1);
+        }else if((posture !== previous && posture !== 0) && previous !== -1) {
+          setDone(done+1);
+        }
+      }else if(posture_name === "right_open") {
+        posture = Posture4(result.landmarks);
         if(posture === 1 && previous === -1) {
           setDone(done+1);
         }else if((posture !== previous && posture !== 0) && previous !== -1) {

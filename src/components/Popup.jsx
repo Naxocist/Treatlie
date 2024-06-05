@@ -6,7 +6,7 @@ import { increment, ref, set, update } from 'firebase/database'
 import { useState } from 'react'
 
 
-const exList = ['right_leg_raise', 'left_leg_raise', 'arms_raise']
+const exList = ['right_leg_raise', 'left_leg_raise', 'arms_raise', 'right_open']
 
 
 function Popup({uid, hash, setPopUp}) {
