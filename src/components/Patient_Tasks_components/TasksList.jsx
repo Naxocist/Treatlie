@@ -32,7 +32,9 @@ function TasksList() {
 
   return(
     <div>
-      <h1 className="packet-title">Exercises</h1>
+      <div className="patient-tp-wrap">
+        <h1 className="packet-title">Exercises</h1>
+      </div>
       <hr/>
       <div className="packet">
         <div className="packet_list">

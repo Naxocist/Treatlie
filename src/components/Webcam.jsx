@@ -10,6 +10,7 @@ import { Posture3 } from "./Webcam_components/Posture3.jsx"
 import { useParams, useNavigate } from 'react-router-dom'
 import { db } from "./../js/firebase.js"
 import { ref, onValue, update } from "firebase/database"
+import GoBackPatient from "./Patient_Packet_components/GoBackPatient.jsx"
 
 let demosSection;
 let poseLandmarker = undefined;
@@ -29,6 +30,14 @@ let goal;
 let setGoal;
 let status=-1;
 let previous=-1;
+
+function stopWebcam() {
+  if (video && video.srcObject) {
+    const tracks = video.srcObject.getTracks();
+    tracks.forEach(track => track.stop());
+  }
+  webcamRunning = false;
+}
 
 function updateStatus() {
   if(done === goal) {
@@ -224,10 +233,15 @@ function Webcam({name}) {
     }else {
       updateStatus();
     }
+
+    return () => {
+      stopWebcam();
+    }
   }, [done]);
 
   return(
     <div className="patient_packets_background">
+      <GoBackPatient/>
       <section id="demos" className="invisible">
         <div id="liveView" className="videoView">
           <div className="media" style={{ position: 'relative'}} onClick={enableCam}>
