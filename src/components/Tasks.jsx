@@ -7,7 +7,7 @@ function Tasks() {
   return(
     <div className="patient_packets_background">
       {/* <Header/> */}
-      <GoBackPatient/>
+      <GoBackPatient who="patient"/>
       <div className="profile-box">
         <Profile/>
       </div>

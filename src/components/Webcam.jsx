@@ -241,7 +241,7 @@ function Webcam({name}) {
 
   return(
     <div className="patient_packets_background">
-      <GoBackPatient/>
+      <GoBackPatient who="patient"/>
       <section id="demos" className="invisible">
         <div id="liveView" className="videoView">
           <div className="media" style={{ position: 'relative'}} onClick={enableCam}>

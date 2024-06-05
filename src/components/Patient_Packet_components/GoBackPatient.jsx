@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 
-function GoBackPatient() {
+function GoBackPatient({who}) {
   const link = useParams();
   const navigate = useNavigate();
   console.log(link);
@@ -8,9 +8,9 @@ function GoBackPatient() {
 
   const enableGoBack = () => {
     if(Object.keys(link).length === 3) {
-      navigate(`/patient/${link.patient_id}/tasks/${link.packet_id}`);
+      navigate(`/${who}/${link.patient_id}/tasks/${link.packet_id}`);
     }else if(Object.keys(link).length === 2) {
-      navigate(`/patient/${link.patient_id}`);
+      navigate(`/${who}/${link.patient_id}`);
     }
   }
   return(
