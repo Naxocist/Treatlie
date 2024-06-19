@@ -7,19 +7,20 @@
 
 # Snapshot
 
-<div style="display: flex; justify-content: space-around; margin: 20px 0">
-    <img src="./src/assets/snapshot/landing.png" height=150 style="margin-right:20px"> 
-    <img src="./src/assets/snapshot/chat.png" height=150>
+<div align="center">
+
+Landing|Chat system
+:-----:|:-----:
+<img src="./src/assets/snapshot/landing.png" height=150 > | <img src="./src/assets/snapshot/chat.png" height=150>
+
+Patient management Hub | Tasks and goals for patient
+:-----:|:-----:
+<img src="./src/assets/snapshot/doctor.png" height=165> |<img src="./src/assets/snapshot/patient.png" height=160>
+
 </div>
 
-<div style="display: flex; justify-content: space-around">
-    <img src="./src/assets/snapshot/doctor.png" height=165 style="margin-right:20px"> 
-    <img src="./src/assets/snapshot/patient.png" height=160>
-</div>
 
-<br>
-
-# Tech Stack & Tools
+# Tech Stack
 
 ![HTML](https://img.icons8.com/?size=120&id=20909&format=png) 
 ![CSS](https://img.icons8.com/?size=120&id=21278&format=png)
