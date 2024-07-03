@@ -1,6 +1,5 @@
 import { useNavigate } from 'react-router-dom'
 import Treatlie from '../assets/Treatlie-without-name.svg'
-import TreatlieName from '../assets/Treatlie-with-name.svg'
 import TreatlieTxt from '../assets/Treatlie-txt.svg'
 
 import { auth, db } from '../js/firebase'
@@ -22,6 +21,7 @@ function Login() {
     await signInWithPopup(auth, provider)
 
     const uid = auth.currentUser.uid;
+
 
     get(ref(db, 'info/' + uid)).then( (res) => {
       if (res.exists()) {

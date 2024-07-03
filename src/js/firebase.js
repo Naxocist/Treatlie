@@ -18,5 +18,6 @@ const auth = getAuth(app);
 const db = getDatabase(app);
 
 export default app
+
 export {auth, db}
 
