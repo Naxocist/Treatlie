@@ -30,3 +30,6 @@ Patient management Hub | Tasks and goals for patient
 ![CSS](https://img.icons8.com/?size=120&id=asWSSTBrDlTW&format=png)
 ![CSS](https://img.icons8.com/?size=120&id=dJjTWMogzFzg&format=png)
 ![CSS](https://img.icons8.com/?size=120&id=62452&format=png)
+
+
+> Note that this source code represents a finished prototype of the whole project idea and is obsoleted.
